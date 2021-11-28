@@ -1,2 +1,5 @@
 # Unity_JumperWireGame
-The Work of Media Network Exercise
+## 概要
+これはメディアネットワークコース演習の作品制作のためのリポジトリです。
+## 使い方
+私もよくわかりません
