@@ -3,7 +3,7 @@ void setup() {
     for(int i = 0; i < 3; i++) pinMode(11+i, OUTPUT);
     // for(int i = 0; i < 3; i++) pinMode(2+i, INPUT);
     for(int i = 0; i < 3; i++) digitalWrite(11+i, LOW);
-    Serial.begin(19200);/
+    Serial.begin(19200);
 }
 
 void loop() {
