@@ -29,6 +29,10 @@ ExportedObj/
 *.pidb.meta
 *.pdb.meta
 
+# plugin generated log files
+*.log
+*.pyc
+
 # Unity3D Generated File On Crash Reports
 sysinfo.txt
 
