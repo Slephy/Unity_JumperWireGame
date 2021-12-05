@@ -20,7 +20,6 @@ public class Serial_Handler : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log("Awake");
         Open();
     }
 
@@ -39,9 +38,7 @@ public class Serial_Handler : MonoBehaviour
 
     private void Open()
     {
-        Debug.Log("Open1");
         serialPort_ = new SerialPort(portName, baudRate, Parity.None, 8, StopBits.One);
-        Debug.Log("Open2");
         serialPort_.Open();
 
         isRunning_ = true;
@@ -52,22 +49,16 @@ public class Serial_Handler : MonoBehaviour
 
     private void Close()
     {
-        Debug.Log("Close1");
         isRunning_ = false;
 
         if (thread_ != null && thread_.IsAlive) {
             thread_.Join();
         }
-        Debug.Log("Close2");
 
         if (serialPort_ != null && serialPort_.IsOpen) {
-            Debug.Log("Close3");
             serialPort_.Close();
-            Debug.Log("Close4");
             serialPort_.Dispose();
-            Debug.Log("Close5");
         }
-        Debug.Log("Close6");
     }
 
     private void Read()
@@ -86,7 +77,6 @@ public class Serial_Handler : MonoBehaviour
 
     public void Write(string message)
     {
-        // Debug.Log("Write");
         try {
             serialPort_.Write(message);
         } catch (System.Exception e) {
