@@ -18,7 +18,7 @@ void loop() {
         for(int j = 0; j < 3; j++){
             int r = digitalRead(4-j);
             int index = 3*i + j;
-            send += r * (1 << index);
+            if(r == HIGH) send += (1 << index);
         }
         digitalWrite(13-i, LOW);
     }
