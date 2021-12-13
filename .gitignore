@@ -39,3 +39,4 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+JumperWireGame/ProjectSettings/Packages/com.unity.probuilder/Settings.json
