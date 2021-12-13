@@ -6617,7 +6617,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d140857dd9e44f1418f47ca5b1dd9c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localGravity: {x: 0, y: -10, z: 0}
+  localGravity: {x: 7, y: -10, z: 0}
 --- !u!4 &758231799 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 31230103823373562, guid: 72ba863274a3af04d8c3469258ff081b, type: 3}
@@ -8097,7 +8097,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh17114
+  m_Name: pb_Mesh17134
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
