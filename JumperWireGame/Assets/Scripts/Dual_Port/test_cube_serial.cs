@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// please set arduino code "test_29"
+
 public class test_cube_serial : MonoBehaviour
 {
     public int PortNumber;
@@ -26,8 +28,10 @@ public class test_cube_serial : MonoBehaviour
     }
 
     void ChangeCubeVisibility(){
-        if(Port_Cube.activeSelf) Port_Cube.SetActive(true);
-        else Port_Cube.SetActive(false);
+        Debug.Log("change cube visibility start");
+        if(Port_Cube.activeSelf) Port_Cube.SetActive(false);
+        else Port_Cube.SetActive(true);
+        Debug.Log("change cube visibility end");
     }
 
     void OnDataReceived(string message){
