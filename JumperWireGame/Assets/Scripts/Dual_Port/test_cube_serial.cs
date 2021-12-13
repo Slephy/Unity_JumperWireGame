@@ -11,7 +11,7 @@ public class test_cube_serial : MonoBehaviour
     public Serial_Handler serial_Handler;
     // public GameObject[] Port_Cubes = new GameObject[2];
     public GameObject Port_Cube;
-
+    private KeyCode led_keycode;
 
     // Start is called before the first frame update
     void Start()
@@ -19,12 +19,16 @@ public class test_cube_serial : MonoBehaviour
         serial_Handler.OnDataReceived += OnDataReceived;
         Port_Cube = GameObject.Find("Port" + PortNumber);
         if(Port_Cube == null) Debug.Log("Port" + PortNumber + "is NULL");
+        if(PortNumber == 2) led_keycode = KeyCode.Alpha2;
+        if(PortNumber == 3) led_keycode = KeyCode.Alpha3;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(led_keycode)){
+            serial_Handler.Write("1");
+        }
     }
 
     void ChangeCubeVisibility(){
