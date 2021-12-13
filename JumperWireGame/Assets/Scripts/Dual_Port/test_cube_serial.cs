@@ -8,17 +8,15 @@ public class test_cube_serial : MonoBehaviour
     public int PortNumber;
     public Serial_Handler serial_Handler;
     // public GameObject[] Port_Cubes = new GameObject[2];
-    public GameObject Port_cube;
+    public GameObject Port_Cube;
 
 
     // Start is called before the first frame update
     void Start()
     {
         serial_Handler.OnDataReceived += OnDataReceived;
-        for (int i = 0; i < 2; i++){
-            Port_Cubes[i] = GameObject.Find("Port" + i);
-            if(Port_Cubes == null) Debug.Log("Port" + (i+2) + "is NULL");
-        }
+        Port_Cube = GameObject.Find("Port" + PortNumber);
+        if(Port_Cube == null) Debug.Log("Port" + PortNumber + "is NULL");
     }
 
     // Update is called once per frame
@@ -27,10 +25,9 @@ public class test_cube_serial : MonoBehaviour
         
     }
 
-    void ChangeCubeVisibility(int index){
-        GameObject cube = Port_Cubes[index];
-        if(cube.activeSelf) cube.SetActive(true);
-        else cube.SetActive(false);
+    void ChangeCubeVisibility(){
+        if(Port_Cube.activeSelf) Port_Cube.SetActive(true);
+        else Port_Cube.SetActive(false);
     }
 
     void OnDataReceived(string message){
@@ -40,7 +37,7 @@ public class test_cube_serial : MonoBehaviour
             try{
                 var data_int = Int32.Parse(data[0]);
                 // Port2 -> 0, Port3 -> 1を送信してくる 
-                ChangeCubeVisibility(data_int);
+                ChangeCubeVisibility();
             }
             catch(System.Exception e){
                 Debug.LogWarning(e.Message);
