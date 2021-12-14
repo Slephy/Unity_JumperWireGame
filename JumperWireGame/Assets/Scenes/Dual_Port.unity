@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -424,7 +424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37a519810391b541b57cc8cdb630cf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PortNumber: 2
+  PortNumber: 5
   serial_Handler: {fileID: 1408470268}
   Port_Cube: {fileID: 1519799331}
 --- !u!114 &1408470268
@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5811c2d38179ec1489104cf9084302c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  portName: COM2
+  portName: COM5
   baudRate: 19200
 --- !u!4 &1408470269
 Transform:

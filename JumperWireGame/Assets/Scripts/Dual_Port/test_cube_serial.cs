@@ -17,10 +17,12 @@ public class test_cube_serial : MonoBehaviour
     void Start()
     {
         serial_Handler.OnDataReceived += OnDataReceived;
-        Port_Cube = GameObject.Find("Port" + PortNumber);
+        // Port_Cube = GameObject.Find("Port" + PortNumber);
         if(Port_Cube == null) Debug.Log("Port" + PortNumber + "is NULL");
         if(PortNumber == 2) led_keycode = KeyCode.Alpha2;
         if(PortNumber == 3) led_keycode = KeyCode.Alpha3;
+        if(PortNumber == 4) led_keycode = KeyCode.Alpha4;
+        if(PortNumber == 5) led_keycode = KeyCode.Alpha5;
     }
 
     // Update is called once per frame
