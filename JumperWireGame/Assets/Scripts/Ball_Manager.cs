@@ -16,6 +16,7 @@ public class Ball_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // ボールが落ちたら消す
         if(transform.position.y < -20){
             Destroy(gameObject); 
             Debug.Log("destroy ball");
@@ -23,13 +24,13 @@ public class Ball_Manager : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collision){
-        // Debug.Log(collision.gameObject.name);
-        if(collision.gameObject.name.Split(' ')[0] == "Bucket"){
-            Debug.Log("backet in");
+        
+        if(collision.gameObject.name.Split(' ')[0] == "Bucket"){ // バケツに入ったときの処理
+            // Debug.Log("backet in");
             string bucket_color = collision.gameObject.name.Split(' ')[1];
-            Debug.Log("bucket color is " + bucket_color);
+            // Debug.Log("bucket color is " + bucket_color);
             string ball_color = gameObject.GetComponent<Renderer>().material.name.Split(' ')[0];
-            Debug.Log("ball color is " + ball_color);
+            // Debug.Log("ball color is " + ball_color);
 
             if(ball_color == bucket_color){
                 Debug.Log("SAME COLOR");
