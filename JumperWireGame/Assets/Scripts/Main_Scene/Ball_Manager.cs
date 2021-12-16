@@ -32,11 +32,20 @@ public class Ball_Manager : MonoBehaviour
             string ball_color = gameObject.GetComponent<Renderer>().material.name.Split(' ')[0];
             // Debug.Log("ball color is " + ball_color);
 
-            if(ball_color == bucket_color){
-                Debug.Log("SAME COLOR");
-            }
+            if(ball_color == bucket_color) BucketIsMatch();
+            else BucketIsNotMatch();
             
             Destroy(gameObject);
         }
+    }
+
+    protected virtual void BucketIsMatch(){
+        Debug.Log("SAME COLOR");
+        
+    }
+
+    protected virtual void BucketIsNotMatch(){
+        Debug.Log("DIFFENRENT COLOR");
+
     }
 }

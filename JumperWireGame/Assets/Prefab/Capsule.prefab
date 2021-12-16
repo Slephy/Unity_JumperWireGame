@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6426675068441905699}
   - component: {fileID: 6426675068441905696}
   - component: {fileID: 6426675068441905697}
+  - component: {fileID: 7267568552282539629}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -13206,3 +13207,15 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!114 &7267568552282539629
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6426675068441905703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 761071d05a5326f4d9edd6887fe76e1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
