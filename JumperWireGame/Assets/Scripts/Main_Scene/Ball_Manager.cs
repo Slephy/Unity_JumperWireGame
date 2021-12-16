@@ -6,15 +6,16 @@ using UnityEngine;
 public class Ball_Manager : MonoBehaviour
 {
     // private var rgx = new Regex(@"Bucket\s[a-zA-Z]*");
-    
+    protected GameObject se_manager;
+
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
-        
+        se_manager = GameObject.Find("SE Manager");
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         // ボールが落ちたら消す
         if(transform.position.y < -20){
@@ -41,11 +42,11 @@ public class Ball_Manager : MonoBehaviour
 
     protected virtual void BucketIsMatch(){
         Debug.Log("SAME COLOR");
-        
+        se_manager.GetComponent<SE_Manager>().Play(0);
     }
 
     protected virtual void BucketIsNotMatch(){
         Debug.Log("DIFFENRENT COLOR");
-
+        se_manager.GetComponent<SE_Manager>().Play(2);
     }
 }
