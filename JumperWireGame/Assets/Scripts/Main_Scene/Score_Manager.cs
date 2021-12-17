@@ -7,6 +7,7 @@ public class Score_Manager : MonoBehaviour
 {
     [SerializeField] private int score;
     public GameObject Debug_Score;
+    public GameObject Test_Manager;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +32,8 @@ public class Score_Manager : MonoBehaviour
     }
 
     private void Renew_DebugScore(){
-        Debug_Score.GetComponent<Text>().text = score.ToString();
+        if(Test_Manager.GetComponent<Test_Manager>().CheckIfTest()){
+           Debug_Score.GetComponent<Text>().text = score.ToString();
+        }
     }
 }
