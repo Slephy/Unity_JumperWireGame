@@ -2,16 +2,19 @@ using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ball_Manager : MonoBehaviour
 {
     // private var rgx = new Regex(@"Bucket\s[a-zA-Z]*");
     protected GameObject se_manager;
+    protected GameObject Score_Manager;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
         se_manager = GameObject.Find("SE Manager");
+        Score_Manager = GameObject.Find("Score Manager");
     }
 
     // Update is called once per frame
@@ -43,6 +46,7 @@ public class Ball_Manager : MonoBehaviour
     protected virtual void BucketIsMatch(){
         Debug.Log("SAME COLOR");
         se_manager.GetComponent<SE_Manager>().Play(0);
+        Score_Manager.GetComponent<Score_Manager>().AddScore();
     }
 
     protected virtual void BucketIsNotMatch(){
