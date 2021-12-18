@@ -41,14 +41,22 @@ public class Ball_Manager : MonoBehaviour
         }
     }
 
-    protected virtual void BucketIsMatch(){
+    void BucketIsMatch(){
         Debug.Log("SAME COLOR");
-        se_manager.GetComponent<SE_Manager>().Play(0);
+        PlayOKSound();
         Score_Manager.GetComponent<Score_Manager>().AddScore();
     }
 
     protected virtual void BucketIsNotMatch(){
         Debug.Log("DIFFENRENT COLOR");
+        PlayNGSound();
+    }
+
+    protected virtual void PlayOKSound(){
+        se_manager.GetComponent<SE_Manager>().Play(0);
+    }
+
+    protected virtual void PlayNGSound(){
         se_manager.GetComponent<SE_Manager>().Play(2);
     }
 }

@@ -14,13 +14,12 @@ public class Capsule_Manager : Ball_Manager
         base.Update();
     }
 
-    protected override void BucketIsMatch(){
-        Debug.Log("SAME COLOR CAPSULE");
-        se_manager.GetComponent<SE_Manager>().Play(1);
+    protected override void BucketIsNotMatch(){
+        base.BucketIsNotMatch();
+        // ＊シリアル通信でカプセルを回す指示＊
     }
 
-    protected override void BucketIsNotMatch(){
-        Debug.Log("DIFFERENT COLOR CAPSULE");
-        se_manager.GetComponent<SE_Manager>().Play(2);
+    protected override void PlayOKSound(){
+        se_manager.GetComponent<SE_Manager>().Play(1);
     }
 }
