@@ -8842,6 +8842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball_prefab: {fileID: 2446162662982168409, guid: 77f79050442a1524da303255f2942aea, type: 3}
   capsule_prefab: {fileID: 6426675068441905703, guid: 8e7afe4e2a5cca340989d02f8a4a3832, type: 3}
+  Test_Manager: {fileID: 225917465}
   blue: {fileID: 2100000, guid: 24802d9473b59cc47bd5c91c6f7c01f7, type: 2}
   green: {fileID: 2100000, guid: 0b1cb09231ff264408d5fd77f2f75935, type: 2}
   red: {fileID: 2100000, guid: bc8f5981ddb96554cb7ed97603dafc5b, type: 2}
