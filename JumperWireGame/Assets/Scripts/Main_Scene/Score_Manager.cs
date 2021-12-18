@@ -35,7 +35,7 @@ public class Score_Manager : MonoBehaviour
 
     private void Renew_DebugScore(){
         if(isTest){
-           Debug_Score.GetComponent<Text>().text = score.ToString();
+           Debug_Score.GetComponent<Text>().text = "score: " + score.ToString();
         }
     }
 }
