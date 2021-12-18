@@ -11,12 +11,12 @@ public class Local_Gravity_Manager : MonoBehaviour
     private void Start() 
     {
         rBody = this.GetComponent<Rigidbody>();
-        rBody.useGravity = false; //最初にrigidBodyの重力を使わなくする
+        rBody.useGravity = false; // 最初にrigidBodyの重力を使わなくする
     }
 
     private void FixedUpdate() 
     {
-        SetLocalGravity(); //重力をAddForceでかけるメソッドを呼ぶ。FixedUpdateが好ましい。
+        SetLocalGravity(); // 重力をAddForceでかけるメソッドを呼ぶ。FixedUpdateが好ましい。
     }
 
     private void SetLocalGravity()

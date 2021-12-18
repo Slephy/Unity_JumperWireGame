@@ -16,7 +16,7 @@ public class SE_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if(Input.GetKeyDown(KeyCode.Q)) Play();
+        
     }
 
     public void Play(int SENumber){

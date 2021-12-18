@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class Ball_Manager : MonoBehaviour
 {
-    // private var rgx = new Regex(@"Bucket\s[a-zA-Z]*");
     protected GameObject se_manager;
     protected GameObject Score_Manager;
 
@@ -28,7 +27,6 @@ public class Ball_Manager : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision collision){
-        
         if(collision.gameObject.name.Split(' ')[0] == "Bucket"){ // バケツに入ったときの処理
             // Debug.Log("backet in");
             string bucket_color = collision.gameObject.name.Split(' ')[1];
