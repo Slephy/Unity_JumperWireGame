@@ -20,6 +20,6 @@ public class Capsule_Manager : Ball_Manager
     }
 
     protected override void PlayOKSound(){
-        se_manager.GetComponent<SE_Manager>().Play(1);
+        SE_Player.Play(1);
     }
 }

@@ -6,14 +6,16 @@ using UnityEngine.UI;
 
 public class Ball_Manager : MonoBehaviour
 {
-    protected GameObject se_manager;
+    protected GameObject SE_Manager;
     protected GameObject Score_Manager;
+    protected SE_Manager SE_Player;
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        se_manager = GameObject.Find("SE Manager");
+        SE_Manager = GameObject.Find("SE Manager");
         Score_Manager = GameObject.Find("Score Manager");
+        SE_Player = SE_Manager.GetComponent<SE_Manager>();
     }
 
     // Update is called once per frame
@@ -53,10 +55,10 @@ public class Ball_Manager : MonoBehaviour
     }
 
     protected virtual void PlayOKSound(){
-        se_manager.GetComponent<SE_Manager>().Play(0);
+        SE_Player.Play(0);
     }
 
     protected virtual void PlayNGSound(){
-        se_manager.GetComponent<SE_Manager>().Play(2);
+        SE_Player.Play(2);
     }
 }
