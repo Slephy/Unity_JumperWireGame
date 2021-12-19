@@ -6,13 +6,14 @@ using UnityEngine.UI;
 public class Score_Manager : MonoBehaviour
 {
     [SerializeField] private int score;
-    public GameObject Debug_Score;
-    [SerializeField] private GameObject Test_Manager;
+    [SerializeField] private Text debugScoreText;
+    // public GameObject Debug_Score;
+    [SerializeField] private Test_Manager testManager;
     private bool isTest;
     // Start is called before the first frame update
     void Start()
     {
-        isTest = Test_Manager.GetComponent<Test_Manager>().CheckIfTest();
+        isTest = testManager.CheckIfTest();
         ResetScore();
     }
 
@@ -35,7 +36,7 @@ public class Score_Manager : MonoBehaviour
 
     private void Renew_DebugScore(){
         if(isTest){
-           Debug_Score.GetComponent<Text>().text = "score: " + score.ToString();
+           debugScoreText.text = "score: " + score.ToString();
         }
     }
 }
