@@ -17,12 +17,20 @@ public class Ball_Generator : MonoBehaviour
     [SerializeField] private Material green;
     [SerializeField] private Material red;
 
+    const float GENERATE_X = -16.5f;
+    const float GENERATE_Y = 2.7f;
+    const float GENERATE_Z_MIN = -14.0f;
+    const float GENERATE_Z_MAX = -2.0f;
+    const int GENERATEPOS_MAX = 6;
+
     private bool isTest;
     StreamReader streamReader;
     double timeFromStart = 0;
+    
     double time;
     string color;
     bool isCapsule;
+    int _generate_pos;
     bool fileIsEnd = false;
     
     // Start is called before the first frame update
@@ -38,7 +46,7 @@ public class Ball_Generator : MonoBehaviour
         timeFromStart += Time.deltaTime;
         if(timeFromStart >= time && !fileIsEnd){
             Debug.LogFormat("time: {0}, color: {1}, isCapsule: {2}", time, color, isCapsule);
-            CreateBallOrCapsule(color, isCapsule, -1);
+            CreateBallOrCapsule(color, isCapsule, _generate_pos);
             ReadNextLine();
         }
         if(isTest){
@@ -59,6 +67,7 @@ public class Ball_Generator : MonoBehaviour
         time = double.Parse(vstr[0]);
         color = vstr[1];
         isCapsule = (vstr[2] == "c" || vstr[2] == "C");
+        _generate_pos = Int32.Parse(vstr[3]);
     }
 
 
@@ -69,9 +78,15 @@ public class Ball_Generator : MonoBehaviour
         else inst = Instantiate(ball_prefab) as GameObject;
 
         // 位置の決定
-        if(generatePos == -1) inst.transform.position = new Vector3(-16.5f, 2.7f, UnityEngine.Random.Range(-14.0f, -2.0f));
+        if(generatePos == -1){
+            inst.transform.position = new Vector3(GENERATE_X, GENERATE_Y, UnityEngine.Random.Range(GENERATE_Z_MIN, GENERATE_Z_MAX));
+        }
+        else if(generatePos <= GENERATEPOS_MAX){
+            float z = GENERATE_Z_MIN + (GENERATE_Z_MAX - GENERATE_Z_MIN) * generatePos / GENERATEPOS_MAX;
+            inst.transform.position = new Vector3(GENERATE_X, GENERATE_Y, z);
+        }
         else{
-            // inst.transform.position = new Vector3(-5.75f, 0, NearGeneratePosZ[generatePos]);
+            Debug.Log("generatePos is invalid value: " + generatePos);
         }
         
         switch (color)
