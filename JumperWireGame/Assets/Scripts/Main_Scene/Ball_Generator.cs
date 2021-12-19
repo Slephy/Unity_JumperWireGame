@@ -10,9 +10,8 @@ public class Ball_Generator : MonoBehaviour
 {
     [SerializeField] private GameObject ball_prefab;
     [SerializeField] private GameObject capsule_prefab;
-    [SerializeField] private GameObject Debug_Time;
-    private Text Debug_Time_Text;
-    [SerializeField] private GameObject Test_Manager;
+    [SerializeField] private Text Debug_Time_Text;
+    [SerializeField] private Test_Manager test_Manager;
     [SerializeField] private Material blue;
     [SerializeField] private Material green;
     [SerializeField] private Material red;
@@ -42,8 +41,7 @@ public class Ball_Generator : MonoBehaviour
     void Start()
     {
         // テストモードでの処理
-        isTest = Test_Manager.GetComponent<Test_Manager>().CheckIfTest();
-        Debug_Time_Text = Debug_Time.GetComponent<Text>();
+        isTest = test_Manager.CheckIfTest();
 
         // 生成パターンファイルの読み込み
         streamReader = new StreamReader(@"Assets/Resources/generate_pattern.txt");
