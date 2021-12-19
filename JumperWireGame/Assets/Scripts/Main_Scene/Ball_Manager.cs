@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class Ball_Manager : MonoBehaviour
 {
-    protected GameObject SE_Manager;
-    protected GameObject Score_Manager;
-    protected SE_Manager SE_Player;
+    // protected GameObject SE_Manager;
+    protected Score_Manager scoreManager;
+    protected SE_Manager sePlayer;
 
     protected enum se{
         OK_ball,
@@ -17,16 +17,13 @@ public class Ball_Manager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    protected virtual void Start()
-    {
-        SE_Manager = GameObject.Find("SE Manager");
-        Score_Manager = GameObject.Find("Score Manager");
-        SE_Player = SE_Manager.GetComponent<SE_Manager>();
+    protected virtual void Start(){
+        scoreManager = GameObject.Find("Score Manager").GetComponent<Score_Manager>();
+        sePlayer = GameObject.Find("SE Manager").GetComponent<SE_Manager>();
     }
 
     // Update is called once per frame
-    protected virtual void Update()
-    {
+    protected virtual void Update(){
         // ボールが落ちたら消す
         if(transform.position.y < -20){
             Destroy(gameObject); 
@@ -52,7 +49,7 @@ public class Ball_Manager : MonoBehaviour
     void BucketIsMatch(){
         Debug.Log("SAME COLOR");
         PlayOKSound();
-        Score_Manager.GetComponent<Score_Manager>().AddScore();
+        scoreManager.AddScore();
     }
 
     protected virtual void BucketIsNotMatch(){
@@ -61,10 +58,10 @@ public class Ball_Manager : MonoBehaviour
     }
 
     protected virtual void PlayOKSound(){
-        SE_Player.Play((int)se.OK_ball);
+        sePlayer.Play((int)se.OK_ball);
     }
 
     protected virtual void PlayNGSound(){
-        SE_Player.Play((int)se.NG);
+        sePlayer.Play((int)se.NG);
     }
 }
