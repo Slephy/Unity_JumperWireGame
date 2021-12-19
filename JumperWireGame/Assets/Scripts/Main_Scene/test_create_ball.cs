@@ -22,9 +22,9 @@ public class test_create_ball : MonoBehaviour
     // Update is called once per frame
     void Update(){
         if(isTest){
-            if(Input.GetKeyDown(KeyCode.Alpha1)) CreateSomething("blue");
-            if(Input.GetKeyDown(KeyCode.Alpha2)) CreateSomething("red");
-            if(Input.GetKeyDown(KeyCode.Alpha3)) CreateSomething("green");
+            if(Input.GetKeyDown(KeyCode.Alpha1)) CreateSomething("b");
+            if(Input.GetKeyDown(KeyCode.Alpha2)) CreateSomething("r");
+            if(Input.GetKeyDown(KeyCode.Alpha3)) CreateSomething("g");
         }
     }
 
@@ -52,13 +52,13 @@ public class test_create_ball : MonoBehaviour
         
         switch (color)
         {
-            case "blue":
+            case "b":
                 inst.GetComponent<Renderer>().material = blue;
                 break;
-            case "green":
+            case "g":
                 inst.GetComponent<Renderer>().material = green;
                 break;
-            case "red":
+            case "r":
                 inst.GetComponent<Renderer>().material = red;
                 break;
         }

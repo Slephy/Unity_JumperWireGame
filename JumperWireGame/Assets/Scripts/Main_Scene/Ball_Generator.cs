@@ -109,13 +109,13 @@ public class Ball_Generator : MonoBehaviour
 
         switch (color)
         {
-            case "blue":
+            case "b":
                 inst.GetComponent<Renderer>().material = blue;
                 break;
-            case "green":
+            case "g":
                 inst.GetComponent<Renderer>().material = green;
                 break;
-            case "red":
+            case "r":
                 inst.GetComponent<Renderer>().material = red;
                 break;
         }
