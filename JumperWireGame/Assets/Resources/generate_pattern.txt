@@ -1,0 +1,5 @@
+1 red b
+2 blue b
+4 green c 
+4 red b
+0 0 0
