@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class test_create_ball : MonoBehaviour
 {
-    public GameObject ball_prefab;
-    public GameObject capsule_prefab;
-    public SE_Manager se_player;
-    [SerializeField] private GameObject Test_Manager;
+    [SerializeField] private GameObject ball_prefab;
+    [SerializeField] private GameObject capsule_prefab;
+    [SerializeField] private SE_Manager sePlayer;
+    [SerializeField] private Test_Manager testManager;
+    [SerializeField] private Material blue;
+    [SerializeField] private Material green;
+    [SerializeField] private Material red;
     private bool isTest;
-    public Material blue;
-    public Material green;
-    public Material red;
     private float[] NearGeneratePosZ = new float[3] {-3.3f, -8.0f, -12.5f}; 
 
 
     // Start is called before the first frame update
     void Start(){
-        isTest = Test_Manager.GetComponent<Test_Manager>().CheckIfTest();
+        isTest = testManager.CheckIfTest();
     }
 
     // Update is called once per frame
@@ -64,6 +64,6 @@ public class test_create_ball : MonoBehaviour
                 break;
         }
 
-        se_player.Play(4);
+        sePlayer.Play(4);
     }
 }
