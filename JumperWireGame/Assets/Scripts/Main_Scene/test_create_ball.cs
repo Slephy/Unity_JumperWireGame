@@ -6,6 +6,7 @@ public class test_create_ball : MonoBehaviour
 {
     public GameObject ball_prefab;
     public GameObject capsule_prefab;
+    public SE_Manager se_player;
     [SerializeField] private GameObject Test_Manager;
     private bool isTest;
     public Material blue;
@@ -62,7 +63,7 @@ public class test_create_ball : MonoBehaviour
                 inst.GetComponent<Renderer>().material = red;
                 break;
         }
-    }
 
-    
+        se_player.Play(4);
+    }
 }

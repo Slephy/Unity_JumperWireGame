@@ -8652,6 +8652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball_prefab: {fileID: 2446162662982168409, guid: 77f79050442a1524da303255f2942aea, type: 3}
   capsule_prefab: {fileID: 6426675068441905703, guid: 8e7afe4e2a5cca340989d02f8a4a3832, type: 3}
+  se_player: {fileID: 2031085740}
   Test_Manager: {fileID: 225917465}
   blue: {fileID: 2100000, guid: 24802d9473b59cc47bd5c91c6f7c01f7, type: 2}
   green: {fileID: 2100000, guid: 0b1cb09231ff264408d5fd77f2f75935, type: 2}
@@ -16761,6 +16762,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 55fb330e9e3285b438c3f5c5cdb2d6d2, type: 3}
   - {fileID: 8300000, guid: c4e722f15b2409543b001ebd24cf7829, type: 3}
   - {fileID: 8300000, guid: 06bc4fa1173cf904eae1b73c35d9d662, type: 3}
+  - {fileID: 8300000, guid: cf890efa57458034d8f6243b2bef587b, type: 3}
+  - {fileID: 8300000, guid: b14e8505f870f3649818a5df9391540b, type: 3}
 --- !u!82 &2031085741
 AudioSource:
   m_ObjectHideFlags: 0
