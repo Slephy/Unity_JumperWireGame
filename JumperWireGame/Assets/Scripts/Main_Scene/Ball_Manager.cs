@@ -10,6 +10,12 @@ public class Ball_Manager : MonoBehaviour
     protected GameObject Score_Manager;
     protected SE_Manager SE_Player;
 
+    protected enum se{
+        OK_ball,
+        OK_capsule,
+        NG
+    }
+
     // Start is called before the first frame update
     protected virtual void Start()
     {
@@ -55,10 +61,10 @@ public class Ball_Manager : MonoBehaviour
     }
 
     protected virtual void PlayOKSound(){
-        SE_Player.Play(0);
+        SE_Player.Play((int)se.OK_ball);
     }
 
     protected virtual void PlayNGSound(){
-        SE_Player.Play(2);
+        SE_Player.Play((int)se.NG);
     }
 }
