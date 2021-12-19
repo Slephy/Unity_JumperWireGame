@@ -4,15 +4,20 @@ using System;
 using System.Text;
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ball_Generator : MonoBehaviour
 {
-    public GameObject ball_prefab;
-    public GameObject capsule_prefab;
-    public Material blue;
-    public Material green;
-    public Material red;
+    [SerializeField] private GameObject ball_prefab;
+    [SerializeField] private GameObject capsule_prefab;
+    [SerializeField] private GameObject Debug_Time;
+    private Text Debug_Time_Text;
+    [SerializeField] private GameObject Test_Manager;
+    [SerializeField] private Material blue;
+    [SerializeField] private Material green;
+    [SerializeField] private Material red;
 
+    private bool isTest;
     StreamReader streamReader;
     double timeFromStart = 0;
     double time;
@@ -22,6 +27,8 @@ public class Ball_Generator : MonoBehaviour
     
     // Start is called before the first frame update
     void Start(){
+        isTest = Test_Manager.GetComponent<Test_Manager>().CheckIfTest();
+        Debug_Time_Text = Debug_Time.GetComponent<Text>();
         streamReader = new StreamReader(@"Assets/Resources/generate_pattern.txt");
         ReadNextLine();
     }
@@ -33,6 +40,9 @@ public class Ball_Generator : MonoBehaviour
             Debug.LogFormat("time: {0}, color: {1}, isCapsule: {2}", time, color, isCapsule);
             CreateBallOrCapsule(color, isCapsule, -1);
             ReadNextLine();
+        }
+        if(isTest){
+            Renew_DebugTime();
         }
     }
 
@@ -49,17 +59,6 @@ public class Ball_Generator : MonoBehaviour
         time = double.Parse(vstr[0]);
         color = vstr[1];
         isCapsule = (vstr[2] == "c" || vstr[2] == "C");
-    }
-
-
-    private void CreateSomething(string color){
-        bool isCapsule = Input.GetKey(KeyCode.C);
-        int generatePos = -1;
-        if(Input.GetKey(KeyCode.V)) generatePos = 0;
-        else if(Input.GetKey(KeyCode.B)) generatePos = 1;
-        else if(Input.GetKey(KeyCode.N)) generatePos = 2;
-
-        CreateBallOrCapsule(color, isCapsule, generatePos);
     }
 
 
@@ -87,5 +86,10 @@ public class Ball_Generator : MonoBehaviour
                 inst.GetComponent<Renderer>().material = red;
                 break;
         }
+    }
+
+    
+    void Renew_DebugTime(){
+        Debug_Time_Text.text = timeFromStart.ToString("0.00");
     }
 }
