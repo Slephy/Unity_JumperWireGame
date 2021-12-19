@@ -11,6 +11,9 @@ public class test_create_ball : MonoBehaviour
     public Material blue;
     public Material green;
     public Material red;
+    private float[] NearGeneratePosZ = new float[3] {-3.3f, -8.0f, -12.5f}; 
+
+
     // Start is called before the first frame update
     void Start(){
         isTest = Test_Manager.GetComponent<Test_Manager>().CheckIfTest();
@@ -26,16 +29,27 @@ public class test_create_ball : MonoBehaviour
     }
 
     private void CreateSomething(string color){
-        if(Input.GetKey(KeyCode.C)) CreateBallOrCapsule(color, true);
-        else CreateBallOrCapsule(color);
+        bool isCapsule = Input.GetKey(KeyCode.C);
+        int generatePos = -1;
+        if(Input.GetKey(KeyCode.V)) generatePos = 0;
+        else if(Input.GetKey(KeyCode.B)) generatePos = 1;
+        else if(Input.GetKey(KeyCode.N)) generatePos = 2;
+
+        CreateBallOrCapsule(color, isCapsule, generatePos);
     }
 
-    private void CreateBallOrCapsule(string color, bool isCapsule = false){
-        Debug.Log("space key pressed");
+    private void CreateBallOrCapsule(string color, bool isCapsule, int generatePos){
+        // インスタンス化
         GameObject inst;
         if(isCapsule) inst = Instantiate(capsule_prefab) as GameObject;
         else inst = Instantiate(ball_prefab) as GameObject;
-        inst.transform.position = new Vector3(-16.5f, 2.7f, Random.Range(-14.0f, -2.0f));
+
+        // 位置の決定
+        if(generatePos == -1) inst.transform.position = new Vector3(-16.5f, 2.7f, Random.Range(-14.0f, -2.0f));
+        else{
+            inst.transform.position = new Vector3(-5.75f, 0, NearGeneratePosZ[generatePos]);
+        }
+        
         switch (color)
         {
             case "blue":
