@@ -24,9 +24,11 @@ public class Ball_Generator : MonoBehaviour
     const int GENERATEPOS_MAX = 5;
 
     private bool isTest;
-    StreamReader streamReader;
-    double timeFromStart = 0;
 
+    StreamReader streamReader;
+    bool fileIsEnd = false;
+    
+    double timeFromStart = 0;
 
     struct Generate_Info{
         public double time;
@@ -35,7 +37,6 @@ public class Ball_Generator : MonoBehaviour
         public bool isCapsule;
     }
     Generate_Info info;
-    bool fileIsEnd = false;
 
 
     void Start(){
@@ -108,7 +109,7 @@ public class Ball_Generator : MonoBehaviour
                 break;
         }
 
-        sePlayer.Play(4);
+        sePlayer.Play((int)SE_Manager.SE_kind.Generate);
     }
 
 
