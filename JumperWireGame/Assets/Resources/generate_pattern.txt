@@ -1,7 +1,7 @@
-1 red b 0
-1.5 green b 1
-2 blue b 2
-3 green c 3
-4 red b 4
-5 blue b 5
+1.0 0 red b
+1.5 1 green b
+2.0 2 blue b
+3.0 3 green c
+4.0 4 red b
+5.0 5 blue b
 END

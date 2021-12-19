@@ -21,74 +21,92 @@ public class Ball_Generator : MonoBehaviour
     const float GENERATE_Y = 2.7f;
     const float GENERATE_Z_MIN = -14.0f;
     const float GENERATE_Z_MAX = -2.0f;
-    const int GENERATEPOS_MAX = 6;
+    const int GENERATEPOS_MAX = 5;
 
     private bool isTest;
     StreamReader streamReader;
     double timeFromStart = 0;
-    
-    double time;
-    string color;
-    bool isCapsule;
-    int _generate_pos;
+
+
+    struct Generate_Info
+    {
+        public double time;
+        public int pos;
+        public string color;
+        public bool isCapsule;
+    }
+    Generate_Info info;
     bool fileIsEnd = false;
-    
+
     // Start is called before the first frame update
-    void Start(){
+    void Start()
+    {
+        // テストモードでの処理
         isTest = Test_Manager.GetComponent<Test_Manager>().CheckIfTest();
         Debug_Time_Text = Debug_Time.GetComponent<Text>();
+
+        // 生成パターンファイルの読み込み
         streamReader = new StreamReader(@"Assets/Resources/generate_pattern.txt");
         ReadNextLine();
     }
 
     // Update is called once per frame
-    void Update(){
+    void Update()
+    {
         timeFromStart += Time.deltaTime;
-        if(timeFromStart >= time && !fileIsEnd){
-            Debug.LogFormat("time: {0}, color: {1}, isCapsule: {2}", time, color, isCapsule);
-            CreateBallOrCapsule(color, isCapsule, _generate_pos);
+        if (timeFromStart >= info.time && !fileIsEnd)
+        {
+            Debug.LogFormat("time: {0}, color: {1}, isCapsule: {2}", info.time, info.color, info.isCapsule);
+            CreateBallOrCapsule(info.color, info.isCapsule, info.pos);
             ReadNextLine();
         }
-        if(isTest){
+        if (isTest)
+        {
             Renew_DebugTime();
         }
     }
 
 
-    void ReadNextLine(){
+    void ReadNextLine()
+    {
         string str = streamReader.ReadLine();
-        if(str == "END"){
+        if (str == "END")
+        {
             fileIsEnd = true;
             Debug.Log("FILE IS END");
             return;
         }
 
         string[] vstr = str.Split(' ');
-        time = double.Parse(vstr[0]);
-        color = vstr[1];
-        isCapsule = (vstr[2] == "c" || vstr[2] == "C");
-        _generate_pos = Int32.Parse(vstr[3]);
+        info.time = double.Parse(vstr[0]);
+        info.pos = Int32.Parse(vstr[1]);
+        info.color = vstr[2];
+        info.isCapsule = (vstr[3] == "c" || vstr[3] == "C");
     }
 
 
-    private void CreateBallOrCapsule(string color, bool isCapsule, int generatePos){
+    private void CreateBallOrCapsule(string color, bool isCapsule, int generatePos)
+    {
         // インスタンス化
         GameObject inst;
-        if(isCapsule) inst = Instantiate(capsule_prefab) as GameObject;
+        if (isCapsule) inst = Instantiate(capsule_prefab) as GameObject;
         else inst = Instantiate(ball_prefab) as GameObject;
 
         // 位置の決定
-        if(generatePos == -1){
+        if (generatePos == -1)
+        {
             inst.transform.position = new Vector3(GENERATE_X, GENERATE_Y, UnityEngine.Random.Range(GENERATE_Z_MIN, GENERATE_Z_MAX));
         }
-        else if(generatePos <= GENERATEPOS_MAX){
+        else if (generatePos <= GENERATEPOS_MAX)
+        {
             float z = GENERATE_Z_MIN + (GENERATE_Z_MAX - GENERATE_Z_MIN) * generatePos / GENERATEPOS_MAX;
             inst.transform.position = new Vector3(GENERATE_X, GENERATE_Y, z);
         }
-        else{
+        else
+        {
             Debug.Log("generatePos is invalid value: " + generatePos);
         }
-        
+
         switch (color)
         {
             case "blue":
@@ -103,8 +121,9 @@ public class Ball_Generator : MonoBehaviour
         }
     }
 
-    
-    void Renew_DebugTime(){
+
+    void Renew_DebugTime()
+    {
         Debug_Time_Text.text = timeFromStart.ToString("0.00");
     }
 }
