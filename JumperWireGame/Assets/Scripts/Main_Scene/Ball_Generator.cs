@@ -15,7 +15,7 @@ public class Ball_Generator : MonoBehaviour
 
     StreamReader streamReader;
     double timeFromStart = 0;
-    int time;
+    double time;
     string color;
     bool isCapsule;
     bool fileIsEnd = false;
@@ -46,7 +46,7 @@ public class Ball_Generator : MonoBehaviour
         }
 
         string[] vstr = str.Split(' ');
-        time = Int32.Parse(vstr[0]);
+        time = double.Parse(vstr[0]);
         color = vstr[1];
         isCapsule = (vstr[2] == "c" || vstr[2] == "C");
     }

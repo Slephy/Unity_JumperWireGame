@@ -1,4 +1,6 @@
 1 red b
+1.25 red c
+1.5 green b
 2 blue b
 4 green c 
 4 red b
