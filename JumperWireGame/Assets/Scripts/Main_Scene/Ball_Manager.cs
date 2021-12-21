@@ -10,12 +10,6 @@ public class Ball_Manager : MonoBehaviour
     protected Score_Manager scoreManager;
     protected SE_Manager sePlayer;
 
-    // protected enum se{
-    //     OK_ball,
-    //     OK_capsule,
-    //     NG
-    // }
-
     // Start is called before the first frame update
     protected virtual void Start(){
         scoreManager = GameObject.Find("Score Manager").GetComponent<Score_Manager>();
@@ -33,11 +27,8 @@ public class Ball_Manager : MonoBehaviour
 
     void OnCollisionEnter(Collision collision){
         if(collision.gameObject.name.Split(' ')[0] == "Bucket"){ // バケツに入ったときの処理
-            // Debug.Log("backet in");
             string bucket_color = collision.gameObject.name.Split(' ')[1];
-            // Debug.Log("bucket color is " + bucket_color);
             string ball_color = gameObject.GetComponent<Renderer>().material.name.Split(' ')[0];
-            // Debug.Log("ball color is " + ball_color);
 
             if(ball_color == bucket_color) BucketIsMatch();
             else BucketIsNotMatch();
