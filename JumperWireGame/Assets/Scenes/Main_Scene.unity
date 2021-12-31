@@ -3774,7 +3774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serialHandler: {fileID: 2084509897}
   testManager: {fileID: 225917467}
-  sePlayer: {fileID: 0}
+  sePlayer: {fileID: 2031085740}
   glass: {fileID: 2100000, guid: dd4fc885df0adfa4788a983be527741b, type: 2}
   grayGlass: {fileID: 2100000, guid: 0ee55212adad96c4f9acdbcb09e7c29b, type: 2}
 --- !u!1001 &674276847
@@ -9204,8 +9204,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 55fb330e9e3285b438c3f5c5cdb2d6d2, type: 3}
   - {fileID: 8300000, guid: c4e722f15b2409543b001ebd24cf7829, type: 3}
   - {fileID: 8300000, guid: 06bc4fa1173cf904eae1b73c35d9d662, type: 3}
-  - {fileID: 8300000, guid: cf890efa57458034d8f6243b2bef587b, type: 3}
   - {fileID: 8300000, guid: b14e8505f870f3649818a5df9391540b, type: 3}
+  - {fileID: 8300000, guid: cf890efa57458034d8f6243b2bef587b, type: 3}
+  - {fileID: 8300000, guid: 956347b6939fb4d4abd83a62a826e8b4, type: 3}
 --- !u!82 &2031085741
 AudioSource:
   m_ObjectHideFlags: 0

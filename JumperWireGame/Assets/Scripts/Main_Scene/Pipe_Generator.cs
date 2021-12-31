@@ -16,9 +16,19 @@ public class Pipe_Generator : MonoBehaviour
 
     private GameObject[,,] pipeParts = new GameObject[3, 3, 4];
     private Renderer[,,] pipeRenderer = new Renderer[3, 3, 4];
+    private pipeState[,] pipeStates = new pipeState[3, 3];
+    
     private string[,] pipeName = {{"pipe_1(Blue)", "pipe_2(Green-1)", "pipe_3(Red)"},
                                   {"pipe_2(Blue)", "pipe_1(Green)",   "pipe_2(Red)"},
                                   {"pipe_3(Blue)", "pipe_2(Green-2)", "pipe_1(Red)"}};
+
+    private enum pipeState{
+        None,
+        Generating,
+        Generated,
+        Interrupted,
+        Destroying,
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +43,8 @@ public class Pipe_Generator : MonoBehaviour
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 3; j++){
                 Transform pipe = GameObject.Find(pipeName[i, j]).GetComponent<Transform>();
+                pipeStates[i, j] = pipeState.None;
+
                 for (int k = 0; k < 4; k++){
                     char pipe_group = pipeName[i, j][5];
                     string child_index = (k+1).ToString();
@@ -78,19 +90,38 @@ public class Pipe_Generator : MonoBehaviour
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
                 bool isActive = ((data & (1 << (3*i + j))) > 0);
-                for(int k = 0; k < 4; k++){
-                    pipeParts[i, j, k].SetActive(isActive);
+                if(isActive && pipeStates[i, j] == pipeState.None){
+                    pipeStates[i, j] = pipeState.Generating;
+                    StartCoroutine(CreatePipeGrad(i, j));
                 }
+                else if(!isActive &&pipeStates[i, j] == pipeState.Generated){
+                    pipeStates[i, j] = pipeState.Destroying;
+                    StartCoroutine(DestroyPipeGrad(i, j));
+                }
+                // for(int k = 0; k < 4; k++){
+                //     pipeParts[i, j, k].SetActive(isActive);
+                // }
             }
         }
     }
 
     IEnumerator CreatePipeGrad(int from, int to){
-        Debug.Log("COROUTINUE");
         for(int i = 0; i < 4; i++){
             pipeParts[from, to, i].SetActive(true);
             sePlayer.Play((int)SE_Manager.kind.Generate_pipe);
             if(i != 3) yield return new WaitForSeconds(PIPE_GENERATE_DURATION);
         }
+        pipeStates[from, to] = pipeState.Generated;
     }
+
+    IEnumerator DestroyPipeGrad(int from, int to){
+        for(int i = 0; i < 4; i++){
+            pipeParts[from, to, i].SetActive(false);
+            sePlayer.Play((int)SE_Manager.kind.Destroy_pipe);
+            if(i != 3) yield return new WaitForSeconds(PIPE_GENERATE_DURATION);
+        }
+        pipeStates[from, to] = pipeState.None;
+    }
+
+
 }
