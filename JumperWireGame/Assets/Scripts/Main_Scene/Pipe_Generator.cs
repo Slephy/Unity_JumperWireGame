@@ -30,11 +30,9 @@ public class Pipe_Generator : MonoBehaviour
                     char pipe_group = pipeName[i, j][5];
                     string child_index = (k+1).ToString();
                     string childName = "pipe_" + pipe_group + "-" + child_index;
-                    Debug.Log(childName);
+                    // Debug.Log(childName);
                     pipeParts[i, j, k] = pipe.Find(childName).gameObject;
                     pipeParts[i, j, k].SetActive(false);
-                    // if(pipeParts[i, j, k] == null) Debug.LogFormat("{1} {2} {3} is null", i, j, k);
-                    // else Debug.LogFormat("{1} {2} {3} is created", i, j, k);
                 }
             }
         }
@@ -66,7 +64,7 @@ public class Pipe_Generator : MonoBehaviour
 
     void OnDataReceived(string message){
         int data = Int32.Parse(message);
-        Debug.Log(message);
+        // Debug.Log(message);
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
                 bool isActive = ((data & (1 << (3*i + j))) > 0);
