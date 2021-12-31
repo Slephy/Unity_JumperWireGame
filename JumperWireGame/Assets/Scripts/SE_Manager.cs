@@ -11,8 +11,9 @@ public class SE_Manager : MonoBehaviour
         OK_ball,
         OK_capsule,
         NG,
-        Set_Pipe,
         Generate_balls,
+        Generate_pipe,
+        Destroy_pipe,
     }
 
     // Start is called before the first frame update
