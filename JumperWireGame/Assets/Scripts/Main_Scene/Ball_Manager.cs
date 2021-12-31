@@ -50,10 +50,10 @@ public class Ball_Manager : MonoBehaviour
     }
 
     protected virtual void PlayOKSound(){
-        sePlayer.Play((int)SE_Manager.SE_kind.OK_ball);
+        sePlayer.Play((int)SE_Manager.kind.OK_ball);
     }
 
     protected virtual void PlayNGSound(){
-        sePlayer.Play((int)SE_Manager.SE_kind.NG);
+        sePlayer.Play((int)SE_Manager.kind.NG);
     }
 }

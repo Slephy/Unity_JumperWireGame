@@ -7,12 +7,12 @@ public class SE_Manager : MonoBehaviour
     [SerializeField] private AudioClip[] se;
     AudioSource audioSource;
 
-    public enum SE_kind{
+    public enum kind{
         OK_ball,
         OK_capsule,
         NG,
         Set_Pipe,
-        Generate
+        Generate_balls,
     }
 
     // Start is called before the first frame update
