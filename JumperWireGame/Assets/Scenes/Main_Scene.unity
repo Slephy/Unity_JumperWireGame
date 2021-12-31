@@ -1999,7 +1999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8338cd1681344204181030497afd68b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTest: 1
+  isTest: 0
 --- !u!1001 &247644844
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3772,6 +3772,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875f851094e2059479e3c3e7b4bea823, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  serialHandler: {fileID: 2084509897}
+  testManager: {fileID: 225917467}
 --- !u!1001 &674276847
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9082,6 +9084,7 @@ Transform:
   - {fileID: 2039289077}
   - {fileID: 225917466}
   - {fileID: 642657486}
+  - {fileID: 2084509896}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9371,6 +9374,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 31230103823373562, guid: 72ba863274a3af04d8c3469258ff081b, type: 3}
   m_PrefabInstance: {fileID: 1389847824}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2084509895
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2084509896}
+  - component: {fileID: 2084509897}
+  m_Layer: 0
+  m_Name: Serial Handler Input
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2084509896
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084509895}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2009120739}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2084509897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084509895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5811c2d38179ec1489104cf9084302c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  portName: COM3
+  baudRate: 19200
 --- !u!1001 &31230104300269727
 PrefabInstance:
   m_ObjectHideFlags: 0
