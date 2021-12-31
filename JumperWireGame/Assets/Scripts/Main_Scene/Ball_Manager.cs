@@ -19,7 +19,7 @@ public class Ball_Manager : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update(){
         // ボールが落ちたら消す
-        if(transform.position.y < -20){
+        if(transform.position.y < -25){
             Destroy(gameObject); 
             Debug.Log("destroy ball");
         }
@@ -27,6 +27,7 @@ public class Ball_Manager : MonoBehaviour
 
     void OnCollisionEnter(Collision collision){
         if(collision.gameObject.name.Split(' ')[0] == "Bucket"){ // バケツに入ったときの処理
+            Debug.Log("Bucket in");
             string bucket_color = collision.gameObject.name.Split(' ')[1];
             string ball_color = gameObject.GetComponent<Renderer>().material.name.Split(' ')[0];
 
