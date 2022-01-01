@@ -4,53 +4,66 @@ using UnityEngine;
 
 public class test_create_ball : MonoBehaviour
 {
-    public GameObject ball_prefab;
-    public GameObject capsule_prefab;
-    public Material blue;
-    public Material green;
-    public Material red;
+    [SerializeField] private GameObject ball_prefab;
+    [SerializeField] private GameObject capsule_prefab;
+    [SerializeField] private SE_Manager sePlayer;
+    [SerializeField] private Test_Manager testManager;
+    [SerializeField] private Material blue;
+    [SerializeField] private Material green;
+    [SerializeField] private Material red;
+    private bool isTest;
+    private float[] NearGeneratePosZ = new float[3] {-3.3f, -8.0f, -12.5f}; 
+
+
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start(){
+        isTest = testManager.CheckIfTest();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        // if(Input.GetKeyDown(KeyCode.Space)){
-        //     CreateBallOrCapsule("red");
-        // }
-        if(Input.GetKeyDown(KeyCode.Alpha1)) CreateSomething("blue");
-        if(Input.GetKeyDown(KeyCode.Alpha2)) CreateSomething("red");
-        if(Input.GetKeyDown(KeyCode.Alpha3)) CreateSomething("green");
-    }
-
-    private void CreateSomething(string color){
-        if(Input.GetKey(KeyCode.C)) CreateBallOrCapsule(color, true);
-        else CreateBallOrCapsule(color);
-    }
-
-    private void CreateBallOrCapsule(string color, bool isCapsule = false){
-        Debug.Log("space key pressed");
-        GameObject inst;
-        if(isCapsule) inst = Instantiate(capsule_prefab) as GameObject;
-        else inst = Instantiate(ball_prefab) as GameObject;
-        // GameObject inst = Instantiate(ball_prefab) as GameObject;
-        inst.transform.position = new Vector3(-16.5f, 2.7f, Random.Range(-14.0f, -2.0f));
-        switch (color)
-        {
-            case "blue":
-                inst.GetComponent<Renderer>().material = blue;
-                break;
-            case "green":
-                inst.GetComponent<Renderer>().material = green;
-                break;
-            case "red":
-                inst.GetComponent<Renderer>().material = red;
-                break;
+    void Update(){
+        if(isTest){
+            if(Input.GetKeyDown(KeyCode.Alpha1)) CreateSomething("b");
+            if(Input.GetKeyDown(KeyCode.Alpha2)) CreateSomething("r");
+            if(Input.GetKeyDown(KeyCode.Alpha3)) CreateSomething("g");
         }
     }
 
-    
+    private void CreateSomething(string color){
+        bool isCapsule = Input.GetKey(KeyCode.C);
+        int generatePos = -1;
+        if(Input.GetKey(KeyCode.V)) generatePos = 0;
+        else if(Input.GetKey(KeyCode.B)) generatePos = 1;
+        else if(Input.GetKey(KeyCode.N)) generatePos = 2;
+
+        CreateBallOrCapsule(color, isCapsule, generatePos);
+    }
+
+    private void CreateBallOrCapsule(string color, bool isCapsule, int generatePos){
+        // インスタンス化
+        GameObject inst;
+        if(isCapsule) inst = Instantiate(capsule_prefab) as GameObject;
+        else inst = Instantiate(ball_prefab) as GameObject;
+
+        // 位置の決定
+        if(generatePos == -1) inst.transform.position = new Vector3(-16.5f, 2.7f, Random.Range(-14.0f, -2.0f));
+        else{
+            inst.transform.position = new Vector3(-5.75f, 0, NearGeneratePosZ[generatePos]);
+        }
+        
+        switch (color)
+        {
+            case "b":
+                inst.GetComponent<Renderer>().material = blue;
+                break;
+            case "g":
+                inst.GetComponent<Renderer>().material = green;
+                break;
+            case "r":
+                inst.GetComponent<Renderer>().material = red;
+                break;
+        }
+
+        sePlayer.Play(4);
+    }
 }

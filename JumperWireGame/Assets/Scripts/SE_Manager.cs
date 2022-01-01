@@ -7,6 +7,15 @@ public class SE_Manager : MonoBehaviour
     [SerializeField] private AudioClip[] se;
     AudioSource audioSource;
 
+    public enum kind{
+        OK_ball,
+        OK_capsule,
+        NG,
+        Generate_balls,
+        Generate_pipe,
+        Destroy_pipe,
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +25,7 @@ public class SE_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // if(Input.GetKeyDown(KeyCode.Q)) Play();
+        
     }
 
     public void Play(int SENumber){

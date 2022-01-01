@@ -35,7 +35,6 @@ public class Pipe_Prefab_manager : MonoBehaviour
         float ix = (in_cube - 1) * 2;
         float ox = (out_cube - 1) * 2;
 
-        // float theta = (float)(Math.Atan2(10, (ox - ix)) * 180 / Math.PI);
         float theta_rad = (float)(Math.Atan2(10, (ox - ix)));
         p.transform.position = new Vector3((ix+ox)/2, 1, 0);
         p.transform.localScale = new Vector3(0.3f, 5.0f / (float)Math.Sin(theta_rad), 0.3f);
@@ -56,21 +55,6 @@ public class Pipe_Prefab_manager : MonoBehaviour
     }
 
 
-    // void OnDataReceived(string message){
-    //     var data = message.Split(
-    //         new string[]{"\t"}, System.StringSplitOptions.None);
-
-    //     try{
-    //         int from = Int32.Parse(data[0]);
-    //         int to = Int32.Parse(data[1]);
-    //         bool isConnect = (data[2] == "1");
-    //         if(isConnect) createPipe(from, to);
-    //         else destroyPipe(from, to);
-    //     }
-    //     catch(System.Exception e){
-    //         Debug.LogWarning(e.Message);
-    //     }
-    // }
     void OnDataReceived(string message){
         var data = message.Split(
             new string[]{"\t"}, System.StringSplitOptions.None);

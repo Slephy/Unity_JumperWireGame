@@ -9,7 +9,6 @@ public class test_cube_serial : MonoBehaviour
 {
     public int PortNumber;
     public Serial_Handler serial_Handler;
-    // public GameObject[] Port_Cubes = new GameObject[2];
     public GameObject Port_Cube;
     private KeyCode led_keycode;
 
@@ -17,7 +16,6 @@ public class test_cube_serial : MonoBehaviour
     void Start()
     {
         serial_Handler.OnDataReceived += OnDataReceived;
-        // Port_Cube = GameObject.Find("Port" + PortNumber);
         if(Port_Cube == null) Debug.Log("Port" + PortNumber + "is NULL");
         if(PortNumber == 2) led_keycode = KeyCode.Alpha2;
         if(PortNumber == 3) led_keycode = KeyCode.Alpha3;
