@@ -8,13 +8,13 @@ public class Score_Manager : MonoBehaviour
     [SerializeField] private int score;
     [SerializeField] private int generatedBall;
     [SerializeField] private int destroyedBall;
+    [SerializeField] private int ballQuantity = int.MaxValue;
     [SerializeField] private Text debugScoreText;
     [SerializeField] private Test_Manager testManager;
     private bool isTest;
     
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start(){
         isTest = testManager.CheckIfTest();
         Reset();
     }
@@ -26,6 +26,10 @@ public class Score_Manager : MonoBehaviour
                 AddScore();
             }
         }
+    }
+
+    public void InitBallQuantity(int q){
+        ballQuantity = q;
     }
 
     public void AddScore(){

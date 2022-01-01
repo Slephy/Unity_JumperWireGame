@@ -6494,6 +6494,7 @@ MonoBehaviour:
   capsule_prefab: {fileID: 6426675068441905703, guid: 8e7afe4e2a5cca340989d02f8a4a3832, type: 3}
   debugTimeText: {fileID: 1881424396}
   testManager: {fileID: 225917467}
+  scoreManager: {fileID: 2039289078}
   sePlayer: {fileID: 2031085740}
   materials:
   - {fileID: 2100000, guid: 24802d9473b59cc47bd5c91c6f7c01f7, type: 2}
@@ -9349,6 +9350,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 0
+  generatedBall: 0
+  destroyedBall: 0
+  ballQuantity: 2147483647
   debugScoreText: {fileID: 1340851356}
   testManager: {fileID: 225917467}
 --- !u!1 &2063557154 stripped

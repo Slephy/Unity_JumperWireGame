@@ -47,6 +47,8 @@ public class Ball_Generator : MonoBehaviour
         red,
     }
 
+    private int ballQuantity;
+
 
     void Start(){
         // テストモードでの処理
@@ -54,6 +56,7 @@ public class Ball_Generator : MonoBehaviour
 
         // 生成パターンファイルの読み込み
         streamReader = new StreamReader(@"Assets/Resources/generate_pattern.txt");
+        ReadFirstLine();
         ReadNextLine();
     }
 
@@ -69,6 +72,13 @@ public class Ball_Generator : MonoBehaviour
         if (isTest){
             Renew_DebugTime();
         }
+    }
+
+
+    void ReadFirstLine(){
+        string str = streamReader.ReadLine();
+        ballQuantity = Int32.Parse(str);
+        scoreManager.InitBallQuantity(ballQuantity);
     }
 
 
