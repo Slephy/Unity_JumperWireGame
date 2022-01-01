@@ -13,9 +13,11 @@ public class Ball_Generator : MonoBehaviour
     [SerializeField] private Text debugTimeText;
     [SerializeField] private Test_Manager testManager;
     [SerializeField] private SE_Manager sePlayer;
-    [SerializeField] private Material blue;
-    [SerializeField] private Material green;
-    [SerializeField] private Material red;
+    // [SerializeField] private Material blue;
+    // [SerializeField] private Material green;
+    // [SerializeField] private Material red;
+
+    [SerializeField] private Material[] materials;
 
     const float GENERATE_X = -16.5f;
     const float GENERATE_Y = 2.7f;
@@ -37,6 +39,12 @@ public class Ball_Generator : MonoBehaviour
         public bool isCapsule;
     }
     Generate_Info info;
+
+    private enum Color{
+        blue,
+        green,
+        red,
+    }
 
 
     void Start(){
@@ -99,13 +107,16 @@ public class Ball_Generator : MonoBehaviour
 
         switch (color){
             case "b":
-                inst.GetComponent<Renderer>().material = blue;
+                inst.GetComponent<Renderer>().material = materials[(int)Color.blue];
                 break;
             case "g":
-                inst.GetComponent<Renderer>().material = green;
+                inst.GetComponent<Renderer>().material = materials[(int)Color.green];
                 break;
             case "r":
-                inst.GetComponent<Renderer>().material = red;
+                inst.GetComponent<Renderer>().material = materials[(int)Color.red];
+                break;
+            case "x":
+                inst.GetComponent<Renderer>().material = materials[(int)UnityEngine.Random.Range(0, 10000) % 3];
                 break;
         }
 

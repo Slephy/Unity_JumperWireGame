@@ -6495,9 +6495,10 @@ MonoBehaviour:
   debugTimeText: {fileID: 1881424396}
   testManager: {fileID: 225917467}
   sePlayer: {fileID: 2031085740}
-  blue: {fileID: 2100000, guid: 24802d9473b59cc47bd5c91c6f7c01f7, type: 2}
-  green: {fileID: 2100000, guid: 0b1cb09231ff264408d5fd77f2f75935, type: 2}
-  red: {fileID: 2100000, guid: bc8f5981ddb96554cb7ed97603dafc5b, type: 2}
+  materials:
+  - {fileID: 2100000, guid: 24802d9473b59cc47bd5c91c6f7c01f7, type: 2}
+  - {fileID: 2100000, guid: 0b1cb09231ff264408d5fd77f2f75935, type: 2}
+  - {fileID: 2100000, guid: bc8f5981ddb96554cb7ed97603dafc5b, type: 2}
 --- !u!1001 &1385123001
 PrefabInstance:
   m_ObjectHideFlags: 0
