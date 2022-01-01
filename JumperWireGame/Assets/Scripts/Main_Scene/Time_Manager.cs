@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Time_Manager : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] private Test_Manager testManager;
     [SerializeField] private Text debugTimeText;
     [SerializeField] private float START_TIME = 0.0f; // タイマーの初期値

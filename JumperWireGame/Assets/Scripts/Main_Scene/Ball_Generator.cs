@@ -10,7 +10,6 @@ public class Ball_Generator : MonoBehaviour
 {
     [SerializeField] private GameObject ball_prefab;
     [SerializeField] private GameObject capsule_prefab;
-    [SerializeField] private Text debugTimeText;
     [SerializeField] private Test_Manager testManager;
     [SerializeField] private Score_Manager scoreManager;
     [SerializeField] private Time_Manager timeManager;
@@ -28,8 +27,6 @@ public class Ball_Generator : MonoBehaviour
     StreamReader streamReader;
     bool fileIsEnd = false;
     
-    // double timeFromStart = 0;
-
     struct Generate_Info{
         public double time;
         public int pos;
@@ -65,10 +62,6 @@ public class Ball_Generator : MonoBehaviour
             Debug.LogFormat("time: {0}, color: {1}, isCapsule: {2}", info.time, info.color, info.isCapsule);
             CreateBallOrCapsule(info.color, info.isCapsule, info.pos);
             ReadNextLine();
-        }
-
-        if (isTest){
-            // Renew_DebugTime();
         }
     }
 
@@ -135,9 +128,4 @@ public class Ball_Generator : MonoBehaviour
         sePlayer.Play((int)SE_Manager.kind.Generate_balls);
         scoreManager.AddGeneratedBall();
     }
-
-
-    // void Renew_DebugTime(){
-    //     debugTimeText.text = timeFromStart.ToString("0.00");
-    // }
 }
