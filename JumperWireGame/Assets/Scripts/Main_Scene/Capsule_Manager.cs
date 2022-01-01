@@ -14,8 +14,8 @@ public class Capsule_Manager : Ball_Manager
         base.Update();
     }
 
-    protected override void BucketIsNotMatch(){
-        base.BucketIsNotMatch();
+    protected override void BucketIsMatch(){
+        base.BucketIsMatch();
         // ＊シリアル通信でカプセルを回す指示＊
     }
 

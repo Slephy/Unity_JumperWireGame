@@ -43,13 +43,13 @@ public class Ball_Manager : MonoBehaviour
         }
     }
 
-    void BucketIsMatch(){
+    protected virtual void BucketIsMatch(){
         Debug.Log("SAME COLOR");
         PlayOKSound();
         scoreManager.AddScore();
     }
 
-    protected virtual void BucketIsNotMatch(){
+    void BucketIsNotMatch(){
         Debug.Log("DIFFENRENT COLOR");
         PlayNGSound();
     }
