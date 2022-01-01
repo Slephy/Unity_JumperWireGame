@@ -14,6 +14,7 @@ public class SE_Manager : MonoBehaviour
         Generate_balls,
         Generate_pipe,
         Destroy_pipe,
+        Fall,
     }
 
     // Start is called before the first frame update

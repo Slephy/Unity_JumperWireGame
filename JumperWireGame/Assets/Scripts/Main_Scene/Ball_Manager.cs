@@ -9,6 +9,7 @@ public class Ball_Manager : MonoBehaviour
     // protected GameObject SE_Manager;
     protected Score_Manager scoreManager;
     protected SE_Manager sePlayer;
+    private const float LIMIT_HEIGHT = -25.0f;
 
     // Start is called before the first frame update
     protected virtual void Start(){
@@ -19,7 +20,8 @@ public class Ball_Manager : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update(){
         // ボールが落ちたら消す
-        if(transform.position.y < -25){
+        if(transform.position.y < LIMIT_HEIGHT){
+            sePlayer.Play((int)SE_Manager.kind.Fall);
             Destroy(gameObject); 
             Debug.Log("destroy ball");
         }
