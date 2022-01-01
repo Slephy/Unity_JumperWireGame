@@ -13,6 +13,7 @@ public class Ball_Generator : MonoBehaviour
     [SerializeField] private Text debugTimeText;
     [SerializeField] private Test_Manager testManager;
     [SerializeField] private Score_Manager scoreManager;
+    [SerializeField] private Time_Manager timeManager;
     [SerializeField] private SE_Manager sePlayer;
     [SerializeField] private Material[] materials;
 
@@ -27,7 +28,7 @@ public class Ball_Generator : MonoBehaviour
     StreamReader streamReader;
     bool fileIsEnd = false;
     
-    double timeFromStart = 0;
+    // double timeFromStart = 0;
 
     struct Generate_Info{
         public double time;
@@ -58,15 +59,16 @@ public class Ball_Generator : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
-        timeFromStart += Time.deltaTime;
-        if (timeFromStart >= info.time && !fileIsEnd){
+        // timeFromStart += Time.deltaTime;
+        float now = timeManager.GetTime();
+        if (now >= info.time && !fileIsEnd){
             Debug.LogFormat("time: {0}, color: {1}, isCapsule: {2}", info.time, info.color, info.isCapsule);
             CreateBallOrCapsule(info.color, info.isCapsule, info.pos);
             ReadNextLine();
         }
 
         if (isTest){
-            Renew_DebugTime();
+            // Renew_DebugTime();
         }
     }
 
@@ -135,7 +137,7 @@ public class Ball_Generator : MonoBehaviour
     }
 
 
-    void Renew_DebugTime(){
-        debugTimeText.text = timeFromStart.ToString("0.00");
-    }
+    // void Renew_DebugTime(){
+    //     debugTimeText.text = timeFromStart.ToString("0.00");
+    // }
 }
