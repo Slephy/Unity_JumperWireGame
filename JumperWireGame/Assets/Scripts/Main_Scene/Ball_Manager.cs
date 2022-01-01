@@ -24,11 +24,13 @@ public class Ball_Manager : MonoBehaviour
             sePlayer.Play((int)SE_Manager.kind.Fall);
             Destroy(gameObject); 
             Debug.Log("destroy ball");
+            scoreManager.AddDestroyedBall();
         }
     }
 
     void OnCollisionEnter(Collision collision){
-        if(collision.gameObject.name.Split(' ')[0] == "Bucket"){ // バケツに入ったときの処理
+         // バケツに入ったとき
+        if(collision.gameObject.name.Split(' ')[0] == "Bucket"){
             Debug.Log("Bucket in");
             string bucket_color = collision.gameObject.name.Split(' ')[1];
             string ball_color = gameObject.GetComponent<Renderer>().material.name.Split(' ')[0];
@@ -36,6 +38,7 @@ public class Ball_Manager : MonoBehaviour
             if(ball_color == bucket_color) BucketIsMatch();
             else BucketIsNotMatch();
             
+            scoreManager.AddDestroyedBall();
             Destroy(gameObject);
         }
     }

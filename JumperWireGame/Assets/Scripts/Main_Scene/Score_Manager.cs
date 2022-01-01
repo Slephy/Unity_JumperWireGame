@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class Score_Manager : MonoBehaviour
 {
     [SerializeField] private int score;
+    [SerializeField] private int generatedBall;
+    [SerializeField] private int destroyedBall;
     [SerializeField] private Text debugScoreText;
     [SerializeField] private Test_Manager testManager;
     private bool isTest;
@@ -14,23 +16,35 @@ public class Score_Manager : MonoBehaviour
     void Start()
     {
         isTest = testManager.CheckIfTest();
-        ResetScore();
+        Reset();
     }
 
     // Update is called once per frame
     void Update(){
-        if(Input.GetKeyDown(KeyCode.F)){
-            AddScore();
+        if(isTest){
+            if(Input.GetKeyDown(KeyCode.F)){
+                AddScore();
+            }
         }
     }
 
     public void AddScore(){
-        this.score++;
+        score++;
         Renew_DebugScore();
     }
 
-    public void ResetScore(){
-        this.score = 0;
+    public void AddGeneratedBall(){
+        generatedBall++;
+    }
+
+    public void AddDestroyedBall(){
+        destroyedBall++;
+    }
+
+    public void Reset(){
+        score = 0;
+        generatedBall = 0;
+        destroyedBall = 0;
         Renew_DebugScore();
     }
 
@@ -39,4 +53,5 @@ public class Score_Manager : MonoBehaviour
            debugScoreText.text = "score: " + score.ToString();
         }
     }
+
 }

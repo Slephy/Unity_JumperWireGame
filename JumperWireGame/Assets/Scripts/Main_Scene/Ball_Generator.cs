@@ -12,6 +12,7 @@ public class Ball_Generator : MonoBehaviour
     [SerializeField] private GameObject capsule_prefab;
     [SerializeField] private Text debugTimeText;
     [SerializeField] private Test_Manager testManager;
+    [SerializeField] private Score_Manager scoreManager;
     [SerializeField] private SE_Manager sePlayer;
     // [SerializeField] private Material blue;
     // [SerializeField] private Material green;
@@ -121,6 +122,7 @@ public class Ball_Generator : MonoBehaviour
         }
 
         sePlayer.Play((int)SE_Manager.kind.Generate_balls);
+        scoreManager.AddGeneratedBall();
     }
 
 
