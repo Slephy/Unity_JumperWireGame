@@ -4887,7 +4887,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.16015486, g: 0.32166696, b: 0.5754717, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -4927,13 +4927,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.05, y: 15.85, z: -7.75}
+  m_LocalRotation: {x: 0.3898319, y: -0.5899416, z: 0.3898319, w: 0.5899416}
+  m_LocalPosition: {x: 13.41, y: 23.02, z: -7.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 66.913, y: -90, z: 0}
 --- !u!1 &991561142 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6146275318639410543, guid: 1d3e92ead4a0a5043988bf60e5dcb26a, type: 3}
@@ -6543,7 +6543,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ball_prefab: {fileID: 2446162662982168409, guid: 77f79050442a1524da303255f2942aea, type: 3}
   capsule_prefab: {fileID: 6426675068441905703, guid: 8e7afe4e2a5cca340989d02f8a4a3832, type: 3}
-  debugTimeText: {fileID: 1881424396}
   testManager: {fileID: 225917467}
   scoreManager: {fileID: 2039289078}
   timeManager: {fileID: 1123314113}
@@ -9269,7 +9268,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 06bc4fa1173cf904eae1b73c35d9d662, type: 3}
   - {fileID: 8300000, guid: b15a1f03c2dc0a74ca231793735e43d9, type: 3}
   - {fileID: 8300000, guid: cdb26a2999890b44182210a220433936, type: 3}
-  - {fileID: 8300000, guid: 956347b6939fb4d4abd83a62a826e8b4, type: 3}
+  - {fileID: 8300000, guid: a26b1c5a6a348ba4e81f1cbfe4f810d5, type: 3}
   - {fileID: 8300000, guid: 2226c4d26922c8e419a57ab1479123ba, type: 3}
 --- !u!82 &2031085741
 AudioSource:
