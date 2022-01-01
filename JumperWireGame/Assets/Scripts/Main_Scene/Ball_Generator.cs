@@ -14,10 +14,6 @@ public class Ball_Generator : MonoBehaviour
     [SerializeField] private Test_Manager testManager;
     [SerializeField] private Score_Manager scoreManager;
     [SerializeField] private SE_Manager sePlayer;
-    // [SerializeField] private Material blue;
-    // [SerializeField] private Material green;
-    // [SerializeField] private Material red;
-
     [SerializeField] private Material[] materials;
 
     const float GENERATE_X = -16.5f;
@@ -128,6 +124,9 @@ public class Ball_Generator : MonoBehaviour
                 break;
             case "x":
                 inst.GetComponent<Renderer>().material = materials[(int)UnityEngine.Random.Range(0, 10000) % 3];
+                break;
+            default:
+                Debug.Log("generateColor is invalid value: " + color);
                 break;
         }
 
