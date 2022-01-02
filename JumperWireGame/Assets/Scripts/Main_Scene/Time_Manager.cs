@@ -7,10 +7,14 @@ public class Time_Manager : MonoBehaviour
 {
     [SerializeField] private Test_Manager testManager;
     [SerializeField] private Text debugTimeText;
+    [SerializeField] private CountDown_Manager countDownManager;
     [SerializeField] private float START_TIME = 0.0f; // タイマーの初期値
     [SerializeField] private float now;
 
+    private const float START_COUNTDOWN = -3.0f;
+    private bool countdowned = false;
     private bool isTest;
+    
 
     void Start(){
         now = START_TIME;
@@ -23,6 +27,11 @@ public class Time_Manager : MonoBehaviour
 
         if(isTest){
             Renew_DebugTime();
+        }
+
+        if(!countdowned && now >= START_COUNTDOWN){
+            countdowned = true;
+            StartCoroutine(countDownManager.DoCountDown());
         }
     }
 

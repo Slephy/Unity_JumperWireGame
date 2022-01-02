@@ -15,6 +15,8 @@ public class SE_Manager : MonoBehaviour
         Generate_pipe,
         Destroy_pipe,
         Fall,
+        CountDown,
+        GameStart,
     }
 
     // Start is called before the first frame update
