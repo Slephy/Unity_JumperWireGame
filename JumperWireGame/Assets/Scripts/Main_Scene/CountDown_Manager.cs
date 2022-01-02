@@ -25,11 +25,11 @@ public class CountDown_Manager : MonoBehaviour
         for(int i = 3; i >= 0; i--){
             if(i == 0){
                 CountDownText.text = "START";
-                sePlayer.Play((int)SE_Manager.kind.GameStart);
+                sePlayer.Play(SE_Manager.kind.GameStart);
             }
             else{
                 CountDownText.text = i.ToString();
-                sePlayer.Play((int)SE_Manager.kind.CountDown);
+                sePlayer.Play(SE_Manager.kind.CountDown);
             }
             yield return new WaitForSeconds(1.0f);
         }

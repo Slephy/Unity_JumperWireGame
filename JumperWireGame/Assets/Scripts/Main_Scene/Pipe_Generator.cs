@@ -134,7 +134,7 @@ public class Pipe_Generator : MonoBehaviour
             pipeParts[from, to, i].SetActive(true);
             if(pipeInterruptedBy[from, to] == -1) pipeRenderer[from, to, i].material = glass;
             else pipeRenderer[from, to, i].material = grayGlass;
-            sePlayer.Play((int)SE_Manager.kind.Generate_pipe);
+            sePlayer.Play(SE_Manager.kind.Generate_pipe);
             if(i != 3) yield return new WaitForSeconds(PIPE_GENERATE_DURATION);
         }
         if(pipeStates[from, to] == pipeState.Generating) pipeStates[from, to] = pipeState.Generated;
@@ -146,7 +146,7 @@ public class Pipe_Generator : MonoBehaviour
             if(!pipeParts[from, to, i].activeSelf) continue; // パイプが妨げられてすでに破壊されていたとき
 
             pipeParts[from, to, i].SetActive(false);
-            sePlayer.Play((int)SE_Manager.kind.Destroy_pipe);
+            sePlayer.Play(SE_Manager.kind.Destroy_pipe);
             if(i != 3) yield return new WaitForSeconds(PIPE_GENERATE_DURATION);
         }
         if(pipeStates[from, to] == pipeState.Destroying) pipeStates[from, to] = pipeState.None;

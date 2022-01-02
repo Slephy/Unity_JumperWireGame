@@ -31,7 +31,7 @@ public class SE_Manager : MonoBehaviour
         
     }
 
-    public void Play(int SENumber){
-        audioSource.PlayOneShot(se[SENumber]);
+    public void Play(kind seKind){
+        audioSource.PlayOneShot(se[(int)seKind]);
     }
 }

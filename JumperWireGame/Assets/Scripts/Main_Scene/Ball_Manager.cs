@@ -21,7 +21,7 @@ public class Ball_Manager : MonoBehaviour
     protected virtual void Update(){
         // ボールが落ちたら消す
         if(transform.position.y < LIMIT_HEIGHT){
-            sePlayer.Play((int)SE_Manager.kind.Fall);
+            sePlayer.Play(SE_Manager.kind.Fall);
             Destroy(gameObject); 
             Debug.Log("destroy ball");
             scoreManager.AddDestroyedBall();
@@ -55,10 +55,10 @@ public class Ball_Manager : MonoBehaviour
     }
 
     protected virtual void PlayOKSound(){
-        sePlayer.Play((int)SE_Manager.kind.OK_ball);
+        sePlayer.Play(SE_Manager.kind.OK_ball);
     }
 
     protected virtual void PlayNGSound(){
-        sePlayer.Play((int)SE_Manager.kind.NG);
+        sePlayer.Play(SE_Manager.kind.NG);
     }
 }

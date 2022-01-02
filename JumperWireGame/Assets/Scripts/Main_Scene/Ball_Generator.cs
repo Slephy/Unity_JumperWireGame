@@ -125,7 +125,7 @@ public class Ball_Generator : MonoBehaviour
                 break;
         }
 
-        sePlayer.Play((int)SE_Manager.kind.Generate_balls);
+        sePlayer.Play(SE_Manager.kind.Generate_balls);
         scoreManager.AddGeneratedBall();
     }
 }
