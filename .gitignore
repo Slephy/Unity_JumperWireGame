@@ -40,3 +40,4 @@ sysinfo.txt
 *.apk
 *.unitypackage
 JumperWireGame/ProjectSettings/Packages/com.unity.probuilder/Settings.json
+JumperWireGame/Logs/ApiUpdaterCheck.txt
