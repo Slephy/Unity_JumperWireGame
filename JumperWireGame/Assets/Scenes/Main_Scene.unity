@@ -4401,6 +4401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f1e5cc05ff584542b1ebba80d758b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sePlayer: {fileID: 2031085740}
   scorePanel: {fileID: 1311323800}
   btnRetry: {fileID: 1604482456}
   btnHome: {fileID: 2102346432}

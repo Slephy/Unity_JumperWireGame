@@ -17,6 +17,8 @@ public class SE_Manager : MonoBehaviour
         Fall,
         CountDown,
         GameStart,
+        UI_don,
+        UI_dodon,
     }
 
     // Start is called before the first frame update

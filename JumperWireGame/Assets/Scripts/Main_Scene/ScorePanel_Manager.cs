@@ -6,6 +6,7 @@ using TMPro;
 
 public class ScorePanel_Manager : MonoBehaviour
 {
+    [SerializeField] private SE_Manager sePlayer;
     [SerializeField] private GameObject scorePanel;
     [SerializeField] private Button btnRetry;
     [SerializeField] private Button btnHome;
@@ -28,13 +29,19 @@ public class ScorePanel_Manager : MonoBehaviour
 
     public IEnumerator ActivateScorePanel(int score){
         yield return new WaitForSeconds(1.0f);
+
         scorePanel.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.5f);
+        
         yourScore.gameObject.SetActive(true);
+        sePlayer.Play(SE_Manager.kind.UI_don);
         yield return new WaitForSeconds(0.5f);
+        
         _score.text = score.ToString();
         _score.gameObject.SetActive(true);
+        sePlayer.Play(SE_Manager.kind.UI_dodon);
         yield return new WaitForSeconds(0.5f);
+        
         btnRetry.gameObject.SetActive(true);
         btnHome.gameObject.SetActive(true);
     }
