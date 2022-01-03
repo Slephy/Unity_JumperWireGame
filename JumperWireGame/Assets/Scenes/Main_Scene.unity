@@ -2003,7 +2003,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8338cd1681344204181030497afd68b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTest: 1
+  isTest: 0
+  debugCanvas: {fileID: 1423342273}
 --- !u!1001 &247644844
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3810,7 +3811,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2009120739}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &642657487
 MonoBehaviour:
@@ -4059,7 +4060,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2009120739}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &715293380
 MonoBehaviour:
@@ -5800,7 +5801,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2009120739}
-  m_RootOrder: 6
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1123314113
 MonoBehaviour:
@@ -9774,13 +9775,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1383358166}
-  - {fileID: 2031085739}
-  - {fileID: 2039289077}
-  - {fileID: 225917466}
   - {fileID: 642657486}
-  - {fileID: 2084509896}
   - {fileID: 1123314112}
+  - {fileID: 225917466}
   - {fileID: 715293379}
+  - {fileID: 2039289077}
+  - {fileID: 2031085739}
+  - {fileID: 2084509896}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9879,7 +9880,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2009120739}
-  m_RootOrder: 1
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2031085740
 MonoBehaviour:
@@ -10028,7 +10029,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2009120739}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2039289078
 MonoBehaviour:
@@ -10106,7 +10107,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2009120739}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2084509897
 MonoBehaviour:

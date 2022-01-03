@@ -24,10 +24,7 @@ public class Time_Manager : MonoBehaviour
     // Update is called once per frame
     void Update(){
         now += Time.deltaTime;
-
-        if(isTest){
-            Renew_DebugTime();
-        }
+        Renew_DebugTime();
 
         if(!countdowned && now >= START_COUNTDOWN){
             countdowned = true;

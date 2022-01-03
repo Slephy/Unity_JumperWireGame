@@ -53,9 +53,7 @@ public class Score_Manager : MonoBehaviour
     }
 
     private void Renew_DebugScore(){
-        if(isTest){
-           debugScoreText.text = "score: " + score.ToString();
-        }
+       debugScoreText.text = "score: " + score.ToString();
     }
 
 }
