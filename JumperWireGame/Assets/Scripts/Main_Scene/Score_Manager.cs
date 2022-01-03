@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class Score_Manager : MonoBehaviour
 {
+    [SerializeField] private Remain_Manager remainManager;
+    [SerializeField] private ScorePanel_Manager scorePanelManager;
+    [SerializeField] private Test_Manager testManager;
     [SerializeField] private int score;
     [SerializeField] private int generatedBall;
     [SerializeField] private int destroyedBall;
     [SerializeField] private int ballQuantity = int.MaxValue;
     [SerializeField] private Text debugScoreText;
-    [SerializeField] private ScorePanel_Manager scorePanelManager;
-    [SerializeField] private Test_Manager testManager;
     private bool isTest;
     
     // Start is called before the first frame update
@@ -31,6 +32,7 @@ public class Score_Manager : MonoBehaviour
 
     public void InitBallQuantity(int q){
         ballQuantity = q;
+        remainManager.initRemain(ballQuantity);
     }
 
     public void AddScore(){
@@ -40,6 +42,7 @@ public class Score_Manager : MonoBehaviour
 
     public void AddGeneratedBall(){
         generatedBall++;
+        remainManager.renewRemain(ballQuantity - generatedBall);
     }
 
     public void AddDestroyedBall(){
