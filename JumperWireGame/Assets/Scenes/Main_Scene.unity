@@ -2137,7 +2137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8338cd1681344204181030497afd68b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isTest: 0
+  isTest: 1
   debugCanvas: {fileID: 1423342273}
 --- !u!1001 &247644844
 PrefabInstance:
@@ -4309,8 +4309,9 @@ GameObject:
   m_Component:
   - component: {fileID: 715293379}
   - component: {fileID: 715293380}
+  - component: {fileID: 715293381}
   m_Layer: 0
-  m_Name: CountDown Manager
+  m_Name: UI Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4345,6 +4346,23 @@ MonoBehaviour:
   timeManager: {fileID: 1123314113}
   sePlayer: {fileID: 2031085740}
   CountDownText: {fileID: 2099323121}
+--- !u!114 &715293381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715293378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f1e5cc05ff584542b1ebba80d758b52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scorePanel: {fileID: 1311323800}
+  btnRetry: {fileID: 1604482456}
+  btnHome: {fileID: 2102346432}
+  yourScore: {fileID: 2107792779}
+  _score: {fileID: 353335294}
 --- !u!43 &731843082
 Mesh:
   m_ObjectHideFlags: 0
@@ -6087,7 +6105,7 @@ MonoBehaviour:
   testManager: {fileID: 225917467}
   debugTimeText: {fileID: 1881424396}
   countDownManager: {fileID: 715293380}
-  START_TIME: -5
+  START_TIME: 0
   now: 0
 --- !u!850595691 &1171863161
 LightingSettings:
@@ -10663,6 +10681,7 @@ MonoBehaviour:
   destroyedBall: 0
   ballQuantity: 2147483647
   debugScoreText: {fileID: 1340851356}
+  scorePanelManager: {fileID: 715293381}
   testManager: {fileID: 225917467}
 --- !u!1 &2063557154 stripped
 GameObject:
@@ -10885,7 +10904,7 @@ GameObject:
   - component: {fileID: 2102346433}
   - component: {fileID: 2102346432}
   m_Layer: 5
-  m_Name: btn_ReturnHome
+  m_Name: btn_Home
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

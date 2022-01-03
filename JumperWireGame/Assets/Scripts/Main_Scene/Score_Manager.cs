@@ -10,6 +10,7 @@ public class Score_Manager : MonoBehaviour
     [SerializeField] private int destroyedBall;
     [SerializeField] private int ballQuantity = int.MaxValue;
     [SerializeField] private Text debugScoreText;
+    [SerializeField] private ScorePanel_Manager scorePanelManager;
     [SerializeField] private Test_Manager testManager;
     private bool isTest;
     
@@ -43,6 +44,10 @@ public class Score_Manager : MonoBehaviour
 
     public void AddDestroyedBall(){
         destroyedBall++;
+        if(destroyedBall == ballQuantity){
+            Debug.Log("CALLED ActivateScorePanal");
+            StartCoroutine(scorePanelManager.ActivateScorePanel(score));
+        }
     }
 
     public void Reset(){
