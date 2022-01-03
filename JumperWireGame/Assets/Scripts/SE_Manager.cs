@@ -19,6 +19,7 @@ public class SE_Manager : MonoBehaviour
         GameStart,
         UI_don,
         UI_dodon,
+        UI_perfect,
     }
 
     // Start is called before the first frame update

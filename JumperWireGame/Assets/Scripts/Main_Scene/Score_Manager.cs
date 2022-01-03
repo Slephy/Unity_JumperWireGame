@@ -46,7 +46,7 @@ public class Score_Manager : MonoBehaviour
         destroyedBall++;
         if(destroyedBall == ballQuantity){
             Debug.Log("CALLED ActivateScorePanal");
-            StartCoroutine(scorePanelManager.ActivateScorePanel(score));
+            StartCoroutine(scorePanelManager.ActivateScorePanel(score, ballQuantity));
         }
     }
 

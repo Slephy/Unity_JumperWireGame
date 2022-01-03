@@ -12,6 +12,7 @@ public class ScorePanel_Manager : MonoBehaviour
     [SerializeField] private Button btnHome;
     [SerializeField] private TextMeshProUGUI yourScore;
     [SerializeField] private TextMeshProUGUI _score;
+    [SerializeField] private TextMeshProUGUI perfect;
 
     void Start(){
         scorePanel.gameObject.SetActive(false);
@@ -19,6 +20,7 @@ public class ScorePanel_Manager : MonoBehaviour
         btnHome.gameObject.SetActive(false);
         yourScore.gameObject.SetActive(false);
         _score.gameObject.SetActive(false);
+        perfect.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -27,7 +29,7 @@ public class ScorePanel_Manager : MonoBehaviour
         
     }
 
-    public IEnumerator ActivateScorePanel(int score){
+    public IEnumerator ActivateScorePanel(int score, int ballQuantity){
         yield return new WaitForSeconds(1.0f);
 
         scorePanel.gameObject.SetActive(true);
@@ -35,11 +37,15 @@ public class ScorePanel_Manager : MonoBehaviour
         
         yourScore.gameObject.SetActive(true);
         sePlayer.Play(SE_Manager.kind.UI_don);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.0f);
         
         _score.text = score.ToString();
         _score.gameObject.SetActive(true);
-        sePlayer.Play(SE_Manager.kind.UI_dodon);
+        if(score == ballQuantity){
+            sePlayer.Play(SE_Manager.kind.UI_perfect);
+            perfect.gameObject.SetActive(true);
+        }
+        else sePlayer.Play(SE_Manager.kind.UI_dodon);
         yield return new WaitForSeconds(0.5f);
         
         btnRetry.gameObject.SetActive(true);
