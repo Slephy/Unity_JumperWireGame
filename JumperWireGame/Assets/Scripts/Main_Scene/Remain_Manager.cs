@@ -6,13 +6,13 @@ using TMPro;
 
 public class Remain_Manager : MonoBehaviour
 {
+    [SerializeField] private GameObject remainPanel;
     [SerializeField] private TextMeshProUGUI remainText;
     [SerializeField] private Image background;
 
 
     void Start(){
-        remainText.gameObject.SetActive(true);
-        background.gameObject.SetActive(true);
+        remainPanel.SetActive(true);
     }
 
     public void initRemain(int ball_quantity){
