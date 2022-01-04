@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System.IO;
 using System.IO.Ports;
 using System.Threading;
 
@@ -8,18 +9,27 @@ public class Serial_Handler : MonoBehaviour
     public delegate void SerialDataReceivedEventHandler(string message);
     public event SerialDataReceivedEventHandler OnDataReceived;
 
-    public string portName = "COM3";
-    public int baudRate    = 19200;
+    private string portName;
+    private int baudRate = 19200;
 
     private SerialPort serialPort_;
     private Thread thread_;
     private bool isRunning_ = false;
+    private bool isPortOpen;
 
     private string message_;
     private bool isNewMessageReceived_ = false;
 
-    void Awake()
-    {
+    // public Serial_Handler(){
+    //     this.portName = "COM3";
+    // }
+
+    // public Serial_Handler(string portName){
+    //     this.portName = portName;
+    // }
+
+    void Awake(){
+        DetectPortName();
         Open();
     }
 
@@ -36,15 +46,33 @@ public class Serial_Handler : MonoBehaviour
         Close();
     }
 
+    private void DetectPortName(){
+        try{
+            var serialName = gameObject.GetComponent<Serial_name>();
+            this.portName = serialName.portName;
+        }
+        catch{
+            this.portName = "COM3";
+        }
+    }
+
     private void Open()
     {
-        serialPort_ = new SerialPort(portName, baudRate, Parity.None, 8, StopBits.One);
-        serialPort_.Open();
+        try{
+            serialPort_ = new SerialPort(portName, baudRate, Parity.None, 8, StopBits.One);
+            serialPort_.Open();
 
-        isRunning_ = true;
+            isRunning_ = true;
 
-        thread_ = new Thread(Read);
-        thread_.Start();
+            thread_ = new Thread(Read);
+            thread_.Start();
+            isPortOpen = true;
+        }
+        catch(IOException){
+            // Debug.LogException(ex);
+            // Debug.LogError("MY ERROR MESSAGE");
+            isPortOpen = false;
+        }
     }
 
     private void Close()
@@ -82,5 +110,13 @@ public class Serial_Handler : MonoBehaviour
         } catch (System.Exception e) {
             Debug.LogWarning(e.Message);
         }
+    }
+
+    public bool isOpen(){
+        return isPortOpen;
+    }
+
+    public bool isDataArrived(){
+        return (serialPort_.BytesToRead > 0);
     }
 }
