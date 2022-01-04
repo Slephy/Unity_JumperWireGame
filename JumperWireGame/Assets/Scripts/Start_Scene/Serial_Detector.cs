@@ -14,18 +14,14 @@ public class Serial_Detector : MonoBehaviour
     void Start(){
         ports = SerialPort.GetPortNames();
 
-        if(ports.Length != 2){
-            Debug.LogWarningFormat("Available ports is not 2 ports. Actually {0}", ports.Length);
-            return;
-        }
-
         foreach(string port in ports){
             Debug.Log("port:" + port);
+            if(port == "COM1") continue;
             var serialTester = Instantiate(serialTesterPrefab) as GameObject;
             serialTester.GetComponent<Serial_name>().portName = port;
 
             serialTester.AddComponent<Serial_Handler>();
-            var serialHandler = GetComponent<Serial_Handler>();
+            var serialHandler = serialTester.GetComponent<Serial_Handler>();
             if(!serialHandler.isOpen()){
                 Debug.LogErrorFormat("Port{0} can't be opened", port);
                 continue;
