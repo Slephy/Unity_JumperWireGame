@@ -1,3 +1,5 @@
 UnityのプロジェクトをGitHubで扱う際は、.gitignoreに*.logを追加するべき。*.logとは、プラグインによって自動で生成されるファイル。
 
 新しいAssetをインポートした後、VScode側で参照が効かなくなることがある。対処法は、Preferences > External Tools > Regenerate project filesを押す。
+
+Unityから外部ファイルを読み込むとき（例えばテキストファイルとか）には、buildした後にそのフォルダーの"ゲーム名"_Data/にそのファイルをコピペする必要がある。
