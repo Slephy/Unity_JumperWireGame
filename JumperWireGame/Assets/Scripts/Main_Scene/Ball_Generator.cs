@@ -49,7 +49,10 @@ public class Ball_Generator : MonoBehaviour
         isTest = testManager.CheckIfTest();
 
         // 生成パターンファイルの読み込み
-        streamReader = new StreamReader(@"Assets/Resources/generate_pattern.txt");
+        // streamReader = new StreamReader(@"Assets/Resources/generate_pattern.txt");
+        string txtPath = Application.dataPath + "/Resources/generate_pattern.txt";
+        Debug.Log(txtPath);
+        streamReader = new StreamReader(txtPath);
         ReadFirstLine();
         ReadNextLine();
     }
