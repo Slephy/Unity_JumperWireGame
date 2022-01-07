@@ -62,7 +62,7 @@ public class Ball_Generator : MonoBehaviour
         // timeFromStart += Time.deltaTime;
         float now = timeManager.GetTime();
         if (now >= info.time && !fileIsEnd){
-            Debug.LogFormat("time: {0}, color: {1}, isCapsule: {2}", info.time, info.color, info.isCapsule);
+            // Debug.LogFormat("time: {0}, color: {1}, isCapsule: {2}", info.time, info.color, info.isCapsule);
             CreateBallOrCapsule(info.color, info.isCapsule, info.pos);
             ReadNextLine();
         }
