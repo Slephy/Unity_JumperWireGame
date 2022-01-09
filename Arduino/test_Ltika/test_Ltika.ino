@@ -1,6 +1,7 @@
 void setup() {
     // put your setup code here, to run once:
     pinMode(OUTPUT, 13);
+    Serial.begin(19200);
 }
 
 void loop() {
