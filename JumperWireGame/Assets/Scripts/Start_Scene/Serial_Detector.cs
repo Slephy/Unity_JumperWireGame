@@ -18,7 +18,7 @@ public class Serial_Detector : MonoBehaviour
 
     // Start is called before the first frame update
     void Start(){
-        DontDestroyOnLoad(this);
+        // DontDestroyOnLoad(this);
 
         ports = SerialPort.GetPortNames();
 
