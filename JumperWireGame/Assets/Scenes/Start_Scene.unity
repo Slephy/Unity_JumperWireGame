@@ -1906,7 +1906,7 @@ GameObject:
   - component: {fileID: 1822086195}
   - component: {fileID: 1822086197}
   m_Layer: 0
-  m_Name: Serial Handler
+  m_Name: Serial Detector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
