@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System.IO;
 using System.IO.Ports;
 
@@ -8,9 +9,13 @@ public class Serial_Detector : MonoBehaviour
 {
     string[] ports;
     [SerializeField] private GameObject serialTesterPrefab;
-    [SerializeField] string inputPort;
-    [SerializeField] string outputPort;
-    
+    [SerializeField] Serial_State_UI_Manager serialStateUIManager;
+    [SerializeField] string inputPort = "";
+    [SerializeField] string outputPort = "";
+
+    private int detectedPorts = 0;
+    private bool isTextUpdated = false;
+
     // Start is called before the first frame update
     void Start(){
         ports = SerialPort.GetPortNames();
@@ -23,13 +28,19 @@ public class Serial_Detector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(!isTextUpdated && detectedPorts == ports.Length){
+            isTextUpdated = true;
+            serialStateUIManager.UpdateText(inputPort, outputPort);
+        }
     }
 
 
     IEnumerator judgeSerialIsSelfActive(string port){
         Debug.Log("port:" + port);
-        if(port == "COM1") yield break;
+        if(port == "COM1"){
+            detectedPorts++;
+            yield break;
+        }
 
         var serialTester = Instantiate(serialTesterPrefab) as GameObject;
         serialTester.GetComponent<Serial_name>().portName = port;
@@ -48,6 +59,8 @@ public class Serial_Detector : MonoBehaviour
         if(serialHandler.isSerialActive) inputPort = port;
         else outputPort = port;
         Destroy(serialTester);
+
+        detectedPorts++;
     }
 
     
