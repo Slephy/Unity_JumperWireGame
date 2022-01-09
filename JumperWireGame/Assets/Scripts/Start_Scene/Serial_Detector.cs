@@ -10,14 +10,16 @@ public class Serial_Detector : MonoBehaviour
     string[] ports;
     [SerializeField] private GameObject serialTesterPrefab;
     [SerializeField] Serial_State_UI_Manager serialStateUIManager;
-    [SerializeField] string inputPort = "";
-    [SerializeField] string outputPort = "";
+    [SerializeField] public static string inputPort = "";
+    [SerializeField] public static string outputPort = "";
 
     private int detectedPorts = 0;
     private bool isTextUpdated = false;
 
     // Start is called before the first frame update
     void Start(){
+        DontDestroyOnLoad(this);
+
         ports = SerialPort.GetPortNames();
 
         foreach(string port in ports){
