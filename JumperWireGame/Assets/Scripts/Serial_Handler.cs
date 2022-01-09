@@ -13,23 +13,14 @@ public class Serial_Handler : MonoBehaviour
     private int baudRate = 19200;
 
     private SerialPort serialPort_;
-    public Thread thread_;
-    // private Thread thread_;
+    private Thread thread_;
     private bool isRunning_ = false;
-    private bool isPortOpen;
 
     private string message_;
     private bool isNewMessageReceived_ = false;
 
     public bool isSerialActive = false; // 自発的にシリアル通信をしてきているか？
 
-    // public Serial_Handler(){
-    //     this.portName = "COM3";
-    // }
-
-    // public Serial_Handler(string portName){
-    //     this.portName = portName;
-    // }
 
     void Awake(){
         DetectPortName();
@@ -70,11 +61,9 @@ public class Serial_Handler : MonoBehaviour
 
             thread_ = new Thread(Read);
             thread_.Start();
-            isPortOpen = true;
         }
         catch(IOException){
             // Debug.LogException(ex);
-            isPortOpen = false;
         }
     }
 
@@ -116,11 +105,6 @@ public class Serial_Handler : MonoBehaviour
     }
 
     public bool isOpen(){
-        return isPortOpen;
-    }
-
-    public bool isDataArrived(){
-        Debug.LogFormat("port {1} 's BytesToRead is {2}", portName, serialPort_.BytesToRead);
-        return (serialPort_.BytesToRead > 0);
+        return (serialPort_ != null && serialPort_.IsOpen);
     }
 }

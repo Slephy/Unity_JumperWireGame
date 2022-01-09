@@ -10,6 +10,7 @@ public class Serial_Detector : MonoBehaviour
     [SerializeField] private GameObject serialTesterPrefab;
     [SerializeField] string inputPort;
     [SerializeField] string outputPort;
+    
     // Start is called before the first frame update
     void Start(){
         ports = SerialPort.GetPortNames();
@@ -41,7 +42,6 @@ public class Serial_Detector : MonoBehaviour
         if(!serialHandler.isOpen()){
             Debug.LogErrorFormat("Port{0} can't be opened", port);
         }
-
 
         yield return new WaitForSeconds(2.0f);
 
