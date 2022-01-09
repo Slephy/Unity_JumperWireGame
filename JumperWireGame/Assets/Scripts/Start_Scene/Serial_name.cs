@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Serial_name : MonoBehaviour
 {
-    public string portName{set; get;}
+    [SerializeField] public string portName;
 }

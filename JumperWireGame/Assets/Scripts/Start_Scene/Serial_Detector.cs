@@ -15,21 +15,7 @@ public class Serial_Detector : MonoBehaviour
         ports = SerialPort.GetPortNames();
 
         foreach(string port in ports){
-            Debug.Log("port:" + port);
-            if(port == "COM1") continue;
-            var serialTester = Instantiate(serialTesterPrefab) as GameObject;
-            serialTester.GetComponent<Serial_name>().portName = port;
-
-            serialTester.AddComponent<Serial_Handler>();
-            var serialHandler = serialTester.GetComponent<Serial_Handler>();
-            if(!serialHandler.isOpen()){
-                Debug.LogErrorFormat("Port{0} can't be opened", port);
-                continue;
-            }
-            if(serialHandler.isDataArrived()) inputPort = port;
-            else outputPort = port;
-            // serialHandler = null;
-            Destroy(serialTester);
+            StartCoroutine(judgeSerialIsSelfActive(port));
         }
     }
 
@@ -37,5 +23,35 @@ public class Serial_Detector : MonoBehaviour
     void Update()
     {
         
+    }
+
+
+    IEnumerator judgeSerialIsSelfActive(string port){
+        Debug.Log("port:" + port);
+        if(port == "COM1") yield break;
+
+        var serialTester = Instantiate(serialTesterPrefab) as GameObject;
+        serialTester.GetComponent<Serial_name>().portName = port;
+
+        serialTester.AddComponent<Serial_Handler>();
+        var serialHandler = serialTester.GetComponent<Serial_Handler>();
+
+        serialHandler.OnDataReceived += OnDataReceived;
+
+        if(!serialHandler.isOpen()){
+            Debug.LogErrorFormat("Port{0} can't be opened", port);
+        }
+
+
+        yield return new WaitForSeconds(2.0f);
+
+        if(serialHandler.isSerialActive) inputPort = port;
+        else outputPort = port;
+        Destroy(serialTester);
+    }
+
+    
+    void OnDataReceived(string message){
+        // Debug.Log(message);
     }
 }
