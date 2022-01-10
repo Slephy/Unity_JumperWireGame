@@ -32,7 +32,7 @@ public class Serial_State_UI_Manager : MonoBehaviour
         }
 
         display = "input: " + inputPort + ", output: " + outputPort;
-        if(!isPortOK) serialState.color = new Color(1, 0, 0);
+        if(!isPortOK) serialState.color = new Color(1f, 0.5f, 0.5f);
         if(isPortOK) buttonStart.interactable = true;
         serialState.text = display;
     }
