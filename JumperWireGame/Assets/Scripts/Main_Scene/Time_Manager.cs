@@ -8,11 +8,14 @@ public class Time_Manager : MonoBehaviour
     [SerializeField] private Test_Manager testManager;
     [SerializeField] private Text debugTimeText;
     [SerializeField] private CountDown_Manager countDownManager;
+    [SerializeField] private Animator animator;
     [SerializeField] private float START_TIME = 0.0f; // タイマーの初期値
     [SerializeField] private float now;
 
     private const float START_COUNTDOWN = -3.0f;
+    private const float START_GAME = 0.0f;
     private bool countdowned = false;
+    private bool gameStarted = false;
     private bool isTest;
     
 
@@ -29,6 +32,11 @@ public class Time_Manager : MonoBehaviour
         if(!countdowned && now >= START_COUNTDOWN){
             countdowned = true;
             StartCoroutine(countDownManager.DoCountDown());
+        }
+
+        if(!gameStarted && now >= START_GAME){
+            gameStarted = true;
+            animator.SetTrigger("GameStart");
         }
     }
 
