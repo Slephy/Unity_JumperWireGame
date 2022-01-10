@@ -150,8 +150,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1437134586}
   - {fileID: 1822086195}
+  - {fileID: 1437134586}
   - {fileID: 1568140891}
   - {fileID: 2005911378}
   m_Father: {fileID: 0}
@@ -1377,7 +1377,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 28399591}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1481189822
 GameObject:
@@ -1740,12 +1740,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1822086194}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 28399591}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1822086197
 MonoBehaviour:
@@ -1761,8 +1761,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serialTesterPrefab: {fileID: 3431450381133421133, guid: c2de87b7c59f36c4aa0507b5b219c3df, type: 3}
   serialStateUIManager: {fileID: 1568140892}
-  inputPort: 
-  outputPort: 
 --- !u!1 &2005911376
 GameObject:
   m_ObjectHideFlags: 0

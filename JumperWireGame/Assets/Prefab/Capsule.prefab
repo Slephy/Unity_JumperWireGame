@@ -13220,6 +13220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 761071d05a5326f4d9edd6887fe76e1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gacha_Rotater: {fileID: 0}
 --- !u!114 &7879714146529348791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13232,3 +13233,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d140857dd9e44f1418f47ca5b1dd9c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GRAVITY:
+  - {x: 0, y: -5, z: 0}
+  - {x: 10, y: -30, z: 0}
+  - {x: 5, y: -5, z: 0}
+  - {x: -5, y: -5, z: 0}
+  - {x: 0, y: -5, z: 0}
+  VELOCITY:
+  - {x: 0, y: 0, z: 0}
+  - {x: 5, y: -10, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0.5, y: 0, z: 0}
+  state: 0
