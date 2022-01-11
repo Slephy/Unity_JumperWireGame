@@ -14,6 +14,12 @@ public class SE_Manager : MonoBehaviour
         Generate_balls,
         Generate_pipe,
         Destroy_pipe,
+        Fall,
+        CountDown,
+        GameStart,
+        UI_don,
+        UI_dodon,
+        UI_perfect,
     }
 
     // Start is called before the first frame update
@@ -28,7 +34,7 @@ public class SE_Manager : MonoBehaviour
         
     }
 
-    public void Play(int SENumber){
-        audioSource.PlayOneShot(se[SENumber]);
+    public void Play(kind seKind){
+        audioSource.PlayOneShot(se[(int)seKind]);
     }
 }

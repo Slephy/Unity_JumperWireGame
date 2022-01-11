@@ -10,12 +10,11 @@ public class Ball_Generator : MonoBehaviour
 {
     [SerializeField] private GameObject ball_prefab;
     [SerializeField] private GameObject capsule_prefab;
-    [SerializeField] private Text debugTimeText;
     [SerializeField] private Test_Manager testManager;
+    [SerializeField] private Score_Manager scoreManager;
+    [SerializeField] private Time_Manager timeManager;
     [SerializeField] private SE_Manager sePlayer;
-    [SerializeField] private Material blue;
-    [SerializeField] private Material green;
-    [SerializeField] private Material red;
+    [SerializeField] private Material[] materials;
 
     const float GENERATE_X = -16.5f;
     const float GENERATE_Y = 2.7f;
@@ -28,8 +27,6 @@ public class Ball_Generator : MonoBehaviour
     StreamReader streamReader;
     bool fileIsEnd = false;
     
-    double timeFromStart = 0;
-
     struct Generate_Info{
         public double time;
         public int pos;
@@ -38,28 +35,44 @@ public class Ball_Generator : MonoBehaviour
     }
     Generate_Info info;
 
+    private enum Color{
+        blue,
+        green,
+        red,
+    }
+
+    private int ballQuantity;
+
 
     void Start(){
         // テストモードでの処理
         isTest = testManager.CheckIfTest();
 
         // 生成パターンファイルの読み込み
-        streamReader = new StreamReader(@"Assets/Resources/generate_pattern.txt");
+        // streamReader = new StreamReader(@"Assets/Resources/generate_pattern.txt");
+        string txtPath = Application.dataPath + "/Resources/generate_pattern.txt";
+        Debug.Log(txtPath);
+        streamReader = new StreamReader(txtPath);
+        ReadFirstLine();
         ReadNextLine();
     }
 
     // Update is called once per frame
     void Update(){
-        timeFromStart += Time.deltaTime;
-        if (timeFromStart >= info.time && !fileIsEnd){
-            Debug.LogFormat("time: {0}, color: {1}, isCapsule: {2}", info.time, info.color, info.isCapsule);
+        // timeFromStart += Time.deltaTime;
+        float now = timeManager.GetTime();
+        if (now >= info.time && !fileIsEnd){
+            // Debug.LogFormat("time: {0}, color: {1}, isCapsule: {2}", info.time, info.color, info.isCapsule);
             CreateBallOrCapsule(info.color, info.isCapsule, info.pos);
             ReadNextLine();
         }
+    }
 
-        if (isTest){
-            Renew_DebugTime();
-        }
+
+    void ReadFirstLine(){
+        string str = streamReader.ReadLine();
+        ballQuantity = Int32.Parse(str);
+        scoreManager.InitBallQuantity(ballQuantity);
     }
 
 
@@ -99,21 +112,23 @@ public class Ball_Generator : MonoBehaviour
 
         switch (color){
             case "b":
-                inst.GetComponent<Renderer>().material = blue;
+                inst.GetComponent<Renderer>().material = materials[(int)Color.blue];
                 break;
             case "g":
-                inst.GetComponent<Renderer>().material = green;
+                inst.GetComponent<Renderer>().material = materials[(int)Color.green];
                 break;
             case "r":
-                inst.GetComponent<Renderer>().material = red;
+                inst.GetComponent<Renderer>().material = materials[(int)Color.red];
+                break;
+            case "x":
+                inst.GetComponent<Renderer>().material = materials[(int)UnityEngine.Random.Range(0, 10000) % 3];
+                break;
+            default:
+                Debug.Log("generateColor is invalid value: " + color);
                 break;
         }
 
-        sePlayer.Play((int)SE_Manager.kind.Generate_balls);
-    }
-
-
-    void Renew_DebugTime(){
-        debugTimeText.text = timeFromStart.ToString("0.00");
+        sePlayer.Play(SE_Manager.kind.Generate_balls);
+        scoreManager.AddGeneratedBall();
     }
 }

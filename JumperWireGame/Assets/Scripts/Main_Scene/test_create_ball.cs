@@ -64,6 +64,6 @@ public class test_create_ball : MonoBehaviour
                 break;
         }
 
-        sePlayer.Play(4);
+        sePlayer.Play(SE_Manager.kind.Generate_balls);
     }
 }

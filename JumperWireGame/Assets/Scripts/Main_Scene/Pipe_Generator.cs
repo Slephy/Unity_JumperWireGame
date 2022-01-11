@@ -5,9 +5,10 @@ using System;
 
 public class Pipe_Generator : MonoBehaviour
 {
-    [SerializeField] private Serial_Handler serialHandler;
+    private Serial_Handler serialHandler;
     [SerializeField] private Test_Manager testManager;
     [SerializeField] private SE_Manager sePlayer;
+    [SerializeField] private Serial_Initializer serialInitializer;
     private bool isTest;
     private const float PIPE_GENERATE_DURATION = 0.15f;
     [SerializeField] private Material glass;
@@ -33,6 +34,7 @@ public class Pipe_Generator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        serialHandler = serialInitializer.InitializeSerialHandler(true);
         // serialHandlerの初期化
         serialHandler.OnDataReceived += OnDataReceived;
 
@@ -134,7 +136,7 @@ public class Pipe_Generator : MonoBehaviour
             pipeParts[from, to, i].SetActive(true);
             if(pipeInterruptedBy[from, to] == -1) pipeRenderer[from, to, i].material = glass;
             else pipeRenderer[from, to, i].material = grayGlass;
-            sePlayer.Play((int)SE_Manager.kind.Generate_pipe);
+            sePlayer.Play(SE_Manager.kind.Generate_pipe);
             if(i != 3) yield return new WaitForSeconds(PIPE_GENERATE_DURATION);
         }
         if(pipeStates[from, to] == pipeState.Generating) pipeStates[from, to] = pipeState.Generated;
@@ -146,7 +148,7 @@ public class Pipe_Generator : MonoBehaviour
             if(!pipeParts[from, to, i].activeSelf) continue; // パイプが妨げられてすでに破壊されていたとき
 
             pipeParts[from, to, i].SetActive(false);
-            sePlayer.Play((int)SE_Manager.kind.Destroy_pipe);
+            sePlayer.Play(SE_Manager.kind.Destroy_pipe);
             if(i != 3) yield return new WaitForSeconds(PIPE_GENERATE_DURATION);
         }
         if(pipeStates[from, to] == pipeState.Destroying) pipeStates[from, to] = pipeState.None;
