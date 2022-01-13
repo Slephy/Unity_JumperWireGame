@@ -50,7 +50,9 @@ public class Ball_Generator : MonoBehaviour
 
         // 生成パターンファイルの読み込み
         // streamReader = new StreamReader(@"Assets/Resources/generate_pattern.txt");
-        string txtPath = Application.dataPath + "/Resources/generate_pattern.txt";
+        string txtPath;
+        if(Demo_Manager.isDemo) txtPath = Application.dataPath + "/Resources/demo_pattern.txt";
+        else txtPath = Application.dataPath + "/Resources/generate_pattern.txt";
         Debug.Log(txtPath);
         streamReader = new StreamReader(txtPath);
         ReadFirstLine();
