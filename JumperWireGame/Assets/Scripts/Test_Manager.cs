@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class Test_Manager : MonoBehaviour
 {
-    [SerializeField] private bool isTest = false;
-    [SerializeField] private Canvas debugCanvas;
+    [SerializeField] private static bool isTest = false;
+    [SerializeField] private Canvas debugCanvas = null;
 
     // Start is called before the first frame update
     void Start(){
-        debugCanvas.gameObject.SetActive(isTest);   
+        if(debugCanvas != null) debugCanvas.gameObject.SetActive(isTest);   
     }
 
     // Update is called once per frame
@@ -21,6 +21,10 @@ public class Test_Manager : MonoBehaviour
 
     public bool CheckIfTest(){
         return isTest;
+    }
+
+    public void ChangeIsTest(bool isTest){
+        Test_Manager.isTest = isTest;
     }
 
 

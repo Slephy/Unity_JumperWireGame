@@ -9,9 +9,9 @@ public class Time_Manager : MonoBehaviour
     [SerializeField] private Text debugTimeText;
     [SerializeField] private CountDown_Manager countDownManager;
     [SerializeField] private Animator animator;
-    [SerializeField] private float START_TIME = 0.0f; // タイマーの初期値
-    [SerializeField] private float now;
 
+    [SerializeField] private float now = 0.0f;
+    private float START_TIME = -4.0f; // タイマーの初期値
     private const float START_COUNTDOWN = -3.0f;
     private const float START_GAME = 0.0f;
     private bool countdowned = false;
@@ -20,6 +20,7 @@ public class Time_Manager : MonoBehaviour
     
 
     void Start(){
+        if(Demo_Manager.isDemo) START_TIME = -1000000.0f;
         now = START_TIME;
         isTest = testManager.CheckIfTest();
     }
