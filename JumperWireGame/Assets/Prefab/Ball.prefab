@@ -133,7 +133,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2446162662982168409}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d140857dd9e44f1418f47ca5b1dd9c33, type: 3}
   m_Name: 
@@ -143,7 +143,7 @@ MonoBehaviour:
   - {x: 10, y: -30, z: 0}
   - {x: 5, y: -5, z: 0}
   - {x: -5, y: -5, z: 0}
-  - {x: 0, y: -5, z: 0}
+  - {x: 0, y: 21.95, z: 0}
   VELOCITY:
   - {x: 0, y: 0, z: 0}
   - {x: 5, y: -10, z: 0}

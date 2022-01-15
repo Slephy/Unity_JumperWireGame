@@ -13,12 +13,10 @@ public class Local_Gravity_Manager : MonoBehaviour
     [SerializeField] private Vector3[] GRAVITY = new[] {new Vector3(0.0f, -7.0f, 0.0f),
                                                         new Vector3(10.0f, -30.0f, 0.0f),
                                                         new Vector3(5.0f, -5.0f, 0.0f),
-                                                        new Vector3(-5.0f, -5.0f, 0.0f),
                                                         new Vector3(0.0f, -5.0f, 0.0f),
     };
     [SerializeField] private Vector3[] VELOCITY = new[] {new Vector3(0.0f, 0.0f, 0.0f),
                                                          new Vector3(5.0f, -10.0f, 0.0f),
-                                                         new Vector3(0.0f, 0.0f, 0.0f),
                                                          new Vector3(0.0f, 0.0f, 0.0f),
                                                          new Vector3(0.5f, 0.0f, 0.0f),
     };
@@ -27,7 +25,6 @@ public class Local_Gravity_Manager : MonoBehaviour
         onStage,
         inPipeFirst,
         inPipeSecond,
-        Decelerating,
         End
     }
 
@@ -38,7 +35,7 @@ public class Local_Gravity_Manager : MonoBehaviour
     // Use this for initialization
     private void Start() {
         rBody = this.GetComponent<Rigidbody>();
-        rBody.useGravity = false; // 最初にrigidBodyの重力を使わなくする
+        rBody.useGravity = false; // 最初にrigidBodyの重力を無効化
         state = BallState.onStage;
         ChangeGravityAndVelocity(state);
     }
@@ -61,17 +58,6 @@ public class Local_Gravity_Manager : MonoBehaviour
                 }
                 break;
 
-            case BallState.Decelerating:
-                if(rBody.velocity.x <= 0.5f && !isXDecelerated){
-                    ChangeLocalGravity_oneDimention(0, 0.5f);
-                    isXDecelerated = true;
-                }
-
-                if(x >= END_X){
-                    state = BallState.End;
-                    ChangeGravityAndVelocity(state);
-                }
-                break;
         }
 
         // if(state == BallState.Decelerating && rBody.velocity.x <= 1.0f){
@@ -85,6 +71,13 @@ public class Local_Gravity_Manager : MonoBehaviour
         state = BallState.inPipeFirst;
         ChangeGravityAndVelocity(state);
         Debug.Log("state is changed to inPipeFirst");
+    }
+
+
+    public void ChangeStateTo_End(){
+        state = BallState.End;
+        ChangeGravityAndVelocity(state);
+        Debug.Log("state is changed to End");
     }
 
 
