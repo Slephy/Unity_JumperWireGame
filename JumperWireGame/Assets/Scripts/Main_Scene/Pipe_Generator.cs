@@ -20,9 +20,9 @@ public class Pipe_Generator : MonoBehaviour
     private pipeState[,] pipeStates = new pipeState[3, 3];
     private int[,] pipeInterruptedBy = new int[3, 3]; // -1:妨げられていない, 0-2:このパイプに妨げられている
     
-    private string[,] pipeName = {{"pipe_1(Blue)", "pipe_2(Green-1)", "pipe_3(Red)"},
+    private string[,] pipeName = {{"pipe_1(Blue)", "pipe_2(Green-2)", "pipe_3(Red)"},
                                   {"pipe_2(Blue)", "pipe_1(Green)",   "pipe_2(Red)"},
-                                  {"pipe_3(Blue)", "pipe_2(Green-2)", "pipe_1(Red)"}};
+                                  {"pipe_3(Blue)", "pipe_2(Green-1)", "pipe_1(Red)"}};
 
     private enum pipeState{
         None,
