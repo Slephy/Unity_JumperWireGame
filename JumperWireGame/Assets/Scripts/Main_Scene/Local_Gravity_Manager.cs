@@ -10,7 +10,7 @@ public class Local_Gravity_Manager : MonoBehaviour
     private const float DECELERATE_X = 10.0f;
     private const float END_X = 12.0f;
 
-    [SerializeField] private Vector3[] GRAVITY = new[] {new Vector3(0.0f, -5.0f, 0.0f),
+    [SerializeField] private Vector3[] GRAVITY = new[] {new Vector3(0.0f, -7.0f, 0.0f),
                                                         new Vector3(10.0f, -30.0f, 0.0f),
                                                         new Vector3(5.0f, -5.0f, 0.0f),
                                                         new Vector3(-5.0f, -5.0f, 0.0f),
