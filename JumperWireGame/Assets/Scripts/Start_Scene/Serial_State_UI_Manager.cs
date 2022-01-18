@@ -16,7 +16,9 @@ public class Serial_State_UI_Manager : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
-        
+        if(Input.GetKeyDown(KeyCode.T)){
+            buttonStart.interactable = true;
+        }
     }
 
     public void UpdateText(string inputPort, string outputPort){
