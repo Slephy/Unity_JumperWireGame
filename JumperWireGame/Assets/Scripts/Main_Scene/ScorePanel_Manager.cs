@@ -36,16 +36,30 @@ public class ScorePanel_Manager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         
         yourScore.gameObject.SetActive(true);
-        sePlayer.Play(SE_Manager.kind.UI_don);
+        sePlayer.Play(SE_Manager.kind.result_don);
         yield return new WaitForSeconds(1.0f);
         
         _score.text = score.ToString();
         _score.gameObject.SetActive(true);
+
+        float getPercent = score / ballQuantity; 
+        // Perfect
         if(score == ballQuantity){
-            sePlayer.Play(SE_Manager.kind.UI_perfect);
+            sePlayer.Play(SE_Manager.kind.result_perfect);
             perfect.gameObject.SetActive(true);
         }
-        else sePlayer.Play(SE_Manager.kind.UI_dodon);
+        // Great
+        else if(getPercent >= 0.8f){
+            sePlayer.Play(SE_Manager.kind.result_great);
+        }
+        // Good
+        else if(getPercent >= 0.5f){
+            sePlayer.Play(SE_Manager.kind.result_good);
+            
+        }
+        // Bad
+        else sePlayer.Play(SE_Manager.kind.result_bad);
+        // else sePlayer.Play(SE_Manager.kind.result_dodon);
         yield return new WaitForSeconds(0.5f);
         
         btnRetry.gameObject.SetActive(true);
