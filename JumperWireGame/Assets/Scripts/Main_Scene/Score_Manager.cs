@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Score_Manager : MonoBehaviour
 {
+    [SerializeField] private BGM_Manager bgnManager;
     [SerializeField] private Remain_Manager remainManager;
     [SerializeField] private ScorePanel_Manager scorePanelManager;
     [SerializeField] private Test_Manager testManager;
@@ -50,6 +51,7 @@ public class Score_Manager : MonoBehaviour
         if(destroyedBall == ballQuantity){
             Debug.Log("CALLED ActivateScorePanal");
             StartCoroutine(scorePanelManager.ActivateScorePanel(score, ballQuantity));
+            bgnManager.StopBGM();
         }
     }
 
