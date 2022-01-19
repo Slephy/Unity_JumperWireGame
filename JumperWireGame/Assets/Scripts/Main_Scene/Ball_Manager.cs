@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,8 +27,10 @@ public class Ball_Manager : MonoBehaviour
             Debug.Log("destroy ball");
             scoreManager.AddDestroyedBall();
         }
+
+        // ボールの大きさを変更する
         float heightFromBottom = transform.position.y - LIMIT_HEIGHT;
-        float scale = heightFromBottom / LIMIT_HEIGHT;
+        float scale = Math.Abs((heightFromBottom / LIMIT_HEIGHT)) * 0.7f + 0.3f ;
         transform.localScale = new Vector3(scale, scale, scale);
     }
 
