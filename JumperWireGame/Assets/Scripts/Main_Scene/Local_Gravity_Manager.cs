@@ -65,7 +65,7 @@ public class Local_Gravity_Manager : MonoBehaviour
     public void ChangeStateTo_InPipeFirst(){
         state = BallState.inPipeFirst;
         ChangeGravityAndVelocity(state);
-        StartCoroutine(pushBall());
+        // StartCoroutine(pushBall());
         Debug.Log("state is changed to inPipeFirst");
     }
 
@@ -85,7 +85,7 @@ public class Local_Gravity_Manager : MonoBehaviour
 
     IEnumerator pushBall(){
         rBody.AddForce(new Vector3(7, 0, 0), ForceMode.Impulse);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         rBody.AddForce(new Vector3(0, -7, 0), ForceMode.Impulse);
     }
 }
