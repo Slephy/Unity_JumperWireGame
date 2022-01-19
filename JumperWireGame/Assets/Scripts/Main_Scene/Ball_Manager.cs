@@ -26,6 +26,9 @@ public class Ball_Manager : MonoBehaviour
             Debug.Log("destroy ball");
             scoreManager.AddDestroyedBall();
         }
+        float heightFromBottom = transform.position.y - LIMIT_HEIGHT;
+        float scale = heightFromBottom / LIMIT_HEIGHT;
+        transform.localScale = new Vector3(scale, scale, scale);
     }
 
     void OnCollisionEnter(Collision collision){
