@@ -66,7 +66,7 @@ public class Local_Gravity_Manager : MonoBehaviour
         state = BallState.inPipeFirst;
         ChangeGravityAndVelocity(state);
         // StartCoroutine(pushBall());
-        Debug.Log("state is changed to inPipeFirst");
+        // Debug.Log("state is changed to inPipeFirst");
     }
 
 

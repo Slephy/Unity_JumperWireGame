@@ -38,7 +38,7 @@ public class Ball_Manager : MonoBehaviour
         string colName = collision.gameObject.name;
         // Debug.Log(colName);
         if(colName.Split('_')[0] == "pipe" && colName[colName.Length -1] == '1'){
-            Debug.Log("PIPE IN FIRST");
+            // Debug.Log("PIPE IN FIRST");
             var localGravityManager = gameObject.GetComponent<Local_Gravity_Manager>();
             localGravityManager.ChangeStateTo_InPipeFirst();
         }
