@@ -7296,6 +7296,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 897435095}
+    - target: {fileID: 7394204278939250959, guid: 5324c45167064cb4d90adec26cd977ce, type: 3}
+      propertyPath: m_Name
+      value: Red BucketTrigger
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5324c45167064cb4d90adec26cd977ce, type: 3}
 --- !u!1 &1311323800
@@ -8114,6 +8118,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1053170965}
+    - target: {fileID: 7394204278939250959, guid: 5324c45167064cb4d90adec26cd977ce, type: 3}
+      propertyPath: m_Name
+      value: Green BucketTrigger
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5324c45167064cb4d90adec26cd977ce, type: 3}
 --- !u!1001 &1406918960
@@ -16552,5 +16560,9 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 219167268}
+    - target: {fileID: 7394204278939250959, guid: 5324c45167064cb4d90adec26cd977ce, type: 3}
+      propertyPath: m_Name
+      value: Blue BucketTrigger
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5324c45167064cb4d90adec26cd977ce, type: 3}

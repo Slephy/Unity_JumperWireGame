@@ -36,17 +36,22 @@ public class Ball_Manager : MonoBehaviour
 
     void OnCollisionEnter(Collision collision){
         string colName = collision.gameObject.name;
-        // パイプに入ったとき
+        // Debug.Log(colName);
         if(colName.Split('_')[0] == "pipe" && colName[colName.Length -1] == '1'){
             Debug.Log("PIPE IN FIRST");
             var localGravityManager = gameObject.GetComponent<Local_Gravity_Manager>();
             localGravityManager.ChangeStateTo_InPipeFirst();
         }
+    }
+
+    void OnTriggerEnter(Collider collider){
+        string colName = collider.gameObject.name;
+        // Debug.Log(colName);
 
         // バケツに入ったとき
-        if(colName.Split(' ')[0] == "Bucket"){
+        if(colName.Split(' ')[1] == "BucketTrigger"){
             Debug.Log("Bucket in");
-            string bucket_color = collision.gameObject.name.Split(' ')[1];
+            string bucket_color = collider.gameObject.name.Split(' ')[0];
             string ball_color = gameObject.GetComponent<Renderer>().material.name.Split(' ')[0];
 
             if(ball_color == bucket_color) BucketIsMatch();
@@ -55,6 +60,7 @@ public class Ball_Manager : MonoBehaviour
             scoreManager.AddDestroyedBall();
             Destroy(gameObject);
         }
+        // else Debug.Log("This is not a bucketTrigger");
     }
 
     protected virtual void BucketIsMatch(){
