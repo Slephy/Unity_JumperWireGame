@@ -49,7 +49,6 @@ public class Ball_Generator : MonoBehaviour
         isTest = testManager.CheckIfTest();
 
         // 生成パターンファイルの読み込み
-        // streamReader = new StreamReader(@"Assets/Resources/generate_pattern.txt");
         string txtPath;
         if(Demo_Manager.isDemo) txtPath = Application.dataPath + "/Resources/demo_pattern.txt";
         else txtPath = Application.dataPath + "/Resources/generate_pattern.txt";
@@ -61,7 +60,6 @@ public class Ball_Generator : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
-        // timeFromStart += Time.deltaTime;
         float now = timeManager.GetTime();
         if (now >= info.time && !fileIsEnd){
             // Debug.LogFormat("time: {0}, color: {1}, isCapsule: {2}", info.time, info.color, info.isCapsule);
@@ -101,17 +99,18 @@ public class Ball_Generator : MonoBehaviour
         else inst = Instantiate(ball_prefab) as GameObject;
 
         // 位置の決定
-        if (generatePos == -1){
+        if (generatePos == -1){ // -1 ならばランダムに位置を決定
             inst.transform.position = new Vector3(GENERATE_X, GENERATE_Y, UnityEngine.Random.Range(GENERATE_Z_MIN, GENERATE_Z_MAX));
         }
-        else if (generatePos <= GENERATEPOS_MAX){
+        else if (generatePos <= GENERATEPOS_MAX){ // 有効な値のとき
             float z = GENERATE_Z_MIN + (GENERATE_Z_MAX - GENERATE_Z_MIN) * generatePos / GENERATEPOS_MAX;
             inst.transform.position = new Vector3(GENERATE_X, GENERATE_Y, z);
         }
-        else{
+        else{ // 無効な値のとき
             Debug.Log("generatePos is invalid value: " + generatePos);
         }
 
+        // 色の指定
         switch (color){
             case "b":
                 inst.GetComponent<Renderer>().material = materials[(int)Color.blue];
@@ -122,16 +121,19 @@ public class Ball_Generator : MonoBehaviour
             case "r":
                 inst.GetComponent<Renderer>().material = materials[(int)Color.red];
                 break;
-            case "x":
+            case "x": // ランダム
                 inst.GetComponent<Renderer>().material = materials[(int)UnityEngine.Random.Range(0, 10000) % 3];
                 break;
-            default:
+            default: // 無効な値
                 Debug.Log("generateColor is invalid value: " + color);
                 break;
         }
 
+        // 効果音を再生
         if(!isCapsule) sePlayer.Play(SE_Manager.kind.Generate_ball);
         else sePlayer.Play(SE_Manager.kind.Generate_capsule);
+
+        // 情報を更新
         scoreManager.AddGeneratedBall();
     }
 }
