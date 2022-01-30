@@ -480,10 +480,10 @@ RectTransform:
   m_Father: {fileID: 591651919}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 205, y: 43}
-  m_SizeDelta: {x: 396.2, y: 72.79}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: -212, y: 43}
+  m_SizeDelta: {x: 396.19995, y: 72.79}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &529703202
 MonoBehaviour:
@@ -512,7 +512,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 6
+    m_Alignment: 8
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
@@ -1955,9 +1955,9 @@ RectTransform:
   m_Father: {fileID: 591651919}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -212, y: 43}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 209, y: 43}
   m_SizeDelta: {x: 396.2, y: 72.79}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1763684239
@@ -1987,14 +1987,14 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 300
-    m_Alignment: 8
+    m_Alignment: 6
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 0.78
-  m_Text: "BGM\u30FBSE: \u52B9\u679C\u97F3\u30E9\u30DC\u69D8, OtoLogic\u69D8, \u9B54\u738B\u9B42\u69D8\n\u5236\u4F5C:
-    \u3058\u3083\u3093\u3071\u3041"
+  m_Text: "BGM: DOVA-SYNDROME\u69D8\nSE:     \u52B9\u679C\u97F3\u30E9\u30DC\u69D8,
+    OtoLogic\u69D8, \u9B54\u738B\u9B42\u69D8\n\u5236\u4F5C:  \u3058\u3083\u3093\u3071\u3041"
 --- !u!222 &1763684240
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -9,11 +9,12 @@ public class Pipe_Generator : MonoBehaviour
     [SerializeField] private Test_Manager testManager;
     [SerializeField] private SE_Manager sePlayer;
     [SerializeField] private Serial_Initializer serialInitializer;
-    private bool isTest;
-    private const float PIPE_GENERATE_DURATION = 0.15f;
     [SerializeField] private Material glass;
     [SerializeField] private Material grayGlass;
 
+    private bool isTest;
+    private bool isSerialPortOpen;
+    private const float PIPE_GENERATE_DURATION = 0.15f;
 
     private GameObject[,,] pipeParts = new GameObject[3, 3, 4];
     private Renderer[,,] pipeRenderer = new Renderer[3, 3, 4];
@@ -31,6 +32,10 @@ public class Pipe_Generator : MonoBehaviour
         Destroying,
     }
 
+    private readonly int[] inputKeys = {(int)KeyCode.Q, (int)KeyCode.A, (int)KeyCode.Z};
+    private readonly int[] outputKeys = {(int)KeyCode.E, (int)KeyCode.D, (int)KeyCode.C};
+    private int selectedInputKey = -1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +45,8 @@ public class Pipe_Generator : MonoBehaviour
 
         // isTestの初期化
         isTest = testManager.CheckIfTest();
+        isSerialPortOpen = serialHandler.isOpen();
+        Debug.Log("isSerialPortOpen: " + isSerialPortOpen);
 
         // pipePartsの初期化
         for (int i = 0; i < 3; i++){
@@ -64,28 +71,67 @@ public class Pipe_Generator : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
-        // // デバッグ用 テンキーでパイプ生成
-        // if(isTest){
-        //     for (int i = 0; i < 3; i++){
-        //         for (int j = 0; j < 3; j++){
-        //             if(Input.GetKeyDown((KeyCode)(KeyCode.Keypad1 + (3*i + j)))){
-        //                 StartCoroutine(CreatePipeGrad(i, j));
-        //                 // CreatePipe(i, j);
-        //             }
-        //         }
-        //     }
-        // }
+        if(!isSerialPortOpen){
+            int index = 0;
+            foreach(var key in inputKeys){
+                if(Input.GetKeyDown((KeyCode)key)){
+                    selectedInputKey = index;
+                    break;
+                }
+                index++;
+            }
+
+            if(selectedInputKey != -1){
+                index = 0;
+                foreach(var key in outputKeys){
+                    if(Input.GetKeyDown((KeyCode)key)){
+                        int i = selectedInputKey;
+                        int j = index;
+                        var ps = pipeStates[i, j];
+
+                        // パイプを生成
+                        if(ps == pipeState.None || ps == pipeState.Destroying){ 
+                            pipeStates[i, j] = pipeState.Generating;
+                            pipeInterruptedBy[i, j] = -1;
+
+                            // すでに生成されているパイプを妨げる
+                            for(int k = 0; k < 3; k++){
+                                if(k != j && pipeInterruptedBy[i, k] == -1 && 
+                                (pipeStates[i, k] == pipeState.Generating || pipeStates[i, k] == pipeState.Generated))
+                                {
+                                    pipeInterruptedBy[i, k] = j;
+                                    StartCoroutine(InterruptPipe(i, k));
+                                }
+                            }
+                            StartCoroutine(CreatePipeGrad(i, j));
+                        }
+
+                        // パイプを破壊
+                        else if(ps == pipeState.Generated || ps == pipeState.Generating){
+                            pipeStates[i, j] = pipeState.Destroying;
+
+                            // 自分が妨げていたパイプに、自分のInterrupted情報をコピーする
+                            for(int k = 0; k < 3; k++){
+                                if(k != j && pipeInterruptedBy[i, k] == j){
+                                    pipeInterruptedBy[i, k] = pipeInterruptedBy[i, j];
+                                    if(pipeInterruptedBy[i, k] == -1) StartCoroutine(ResumeInterruptedPipe(i, k));
+                                }
+                            }
+
+                            pipeInterruptedBy[i, j] = -1;
+                            StartCoroutine(DestroyPipeGrad(i, j));
+                        }
+
+                        selectedInputKey = -1;
+                        break;
+                    }
+                    index++;
+                }
+            }
+        }
     }
 
-    // void CreatePipe(int from, int to){
-    //     for (int i = 0; i < 4; i++){
-    //         ChangeActiveState(pipeParts[from, to, i]);
-    //     }
-    // }
 
-    // void ChangeActiveState(GameObject g){
-    //     g.SetActive(!g.activeSelf);
-    // }
 
     void OnDataReceived(string message){
         int data = Int32.Parse(message);

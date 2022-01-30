@@ -13,7 +13,7 @@ public class Local_Gravity_Manager : MonoBehaviour
     private Vector3[] GRAVITY = new[] {new Vector3(0.0f, -7.0f, 0.0f),
                                        new Vector3(10.0f, -10.0f, 0.0f),
                                        new Vector3(5.0f, -5.0f, 0.0f),
-                                       new Vector3(0.0f, -5.0f, 0.0f),
+                                       new Vector3(0.0f, -15.0f, 0.0f),
     };
 
     enum BallState{
@@ -65,8 +65,8 @@ public class Local_Gravity_Manager : MonoBehaviour
     public void ChangeStateTo_InPipeFirst(){
         state = BallState.inPipeFirst;
         ChangeGravityAndVelocity(state);
-        StartCoroutine(pushBall());
-        Debug.Log("state is changed to inPipeFirst");
+        // StartCoroutine(pushBall());
+        // Debug.Log("state is changed to inPipeFirst");
     }
 
 
@@ -85,7 +85,7 @@ public class Local_Gravity_Manager : MonoBehaviour
 
     IEnumerator pushBall(){
         rBody.AddForce(new Vector3(7, 0, 0), ForceMode.Impulse);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         rBody.AddForce(new Vector3(0, -7, 0), ForceMode.Impulse);
     }
 }

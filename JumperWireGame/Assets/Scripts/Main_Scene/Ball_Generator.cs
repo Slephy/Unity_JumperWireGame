@@ -130,7 +130,8 @@ public class Ball_Generator : MonoBehaviour
                 break;
         }
 
-        sePlayer.Play(SE_Manager.kind.Generate_balls);
+        if(!isCapsule) sePlayer.Play(SE_Manager.kind.Generate_ball);
+        else sePlayer.Play(SE_Manager.kind.Generate_capsule);
         scoreManager.AddGeneratedBall();
     }
 }

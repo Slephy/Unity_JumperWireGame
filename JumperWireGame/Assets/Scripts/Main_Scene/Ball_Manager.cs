@@ -1,6 +1,7 @@
 using System.Text.RegularExpressions;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,21 +27,31 @@ public class Ball_Manager : MonoBehaviour
             Debug.Log("destroy ball");
             scoreManager.AddDestroyedBall();
         }
+
+        // ボールの大きさを変更する
+        float heightFromBottom = transform.position.y - LIMIT_HEIGHT;
+        float scale = Math.Abs((heightFromBottom / LIMIT_HEIGHT)) * 0.7f + 0.3f ;
+        transform.localScale = new Vector3(scale, scale, scale);
     }
 
     void OnCollisionEnter(Collision collision){
         string colName = collision.gameObject.name;
-        // パイプに入ったとき
+        // Debug.Log(colName);
         if(colName.Split('_')[0] == "pipe" && colName[colName.Length -1] == '1'){
-            Debug.Log("PIPE IN FIRST");
+            // Debug.Log("PIPE IN FIRST");
             var localGravityManager = gameObject.GetComponent<Local_Gravity_Manager>();
             localGravityManager.ChangeStateTo_InPipeFirst();
         }
+    }
+
+    void OnTriggerEnter(Collider collider){
+        string colName = collider.gameObject.name;
+        // Debug.Log(colName);
 
         // バケツに入ったとき
-        if(colName.Split(' ')[0] == "Bucket"){
+        if(colName.Split(' ')[1] == "BucketTrigger"){
             Debug.Log("Bucket in");
-            string bucket_color = collision.gameObject.name.Split(' ')[1];
+            string bucket_color = collider.gameObject.name.Split(' ')[0];
             string ball_color = gameObject.GetComponent<Renderer>().material.name.Split(' ')[0];
 
             if(ball_color == bucket_color) BucketIsMatch();
@@ -49,6 +60,7 @@ public class Ball_Manager : MonoBehaviour
             scoreManager.AddDestroyedBall();
             Destroy(gameObject);
         }
+        // else Debug.Log("This is not a bucketTrigger");
     }
 
     protected virtual void BucketIsMatch(){

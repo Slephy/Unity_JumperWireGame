@@ -8,6 +8,7 @@ public class Time_Manager : MonoBehaviour
     [SerializeField] private Test_Manager testManager;
     [SerializeField] private Text debugTimeText;
     [SerializeField] private CountDown_Manager countDownManager;
+    [SerializeField] private BGM_Manager bgmManager;
     [SerializeField] private Animator animator;
 
     [SerializeField] private float now = 0.0f;
@@ -38,6 +39,7 @@ public class Time_Manager : MonoBehaviour
         if(!gameStarted && now >= START_GAME){
             gameStarted = true;
             animator.SetTrigger("GameStart");
+            bgmManager.PlayBGM();
         }
     }
 
