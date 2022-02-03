@@ -6,8 +6,9 @@
 |  フォルダ  |  内容  |
 | ---- | ---- |
 |  Arduino  |  Arduinoに書き込むためのスクリプト  |
+|  Game  |  ゲーム本体   |
 |  GitHub_practice  |  GitHubの使い方を練習するための場所  |
-|  JunperWireGame  |  ゲーム本体  |
+|  JunperWireGame  |  Unityのプロジェクト  |
 |  memo  |  備忘録・バージョン情報など  |
 
 

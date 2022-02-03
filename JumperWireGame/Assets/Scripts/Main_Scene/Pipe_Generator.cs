@@ -39,11 +39,11 @@ public class Pipe_Generator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        serialHandler = serialInitializer.InitializeSerialHandler(true);
         // serialHandlerの初期化
+        serialHandler = serialInitializer.InitializeSerialHandler(true);
         serialHandler.OnDataReceived += OnDataReceived;
 
-        // isTestの初期化
+        // 変数の初期化
         isTest = testManager.CheckIfTest();
         isSerialPortOpen = serialHandler.isOpen();
         Debug.Log("isSerialPortOpen: " + isSerialPortOpen);
@@ -71,6 +71,7 @@ public class Pipe_Generator : MonoBehaviour
 
     // Update is called once per frame
     void Update(){
+        // コントローラーがないとき、キーボードで操作する用のコード
         if(!isSerialPortOpen){
             int index = 0;
             foreach(var key in inputKeys){
@@ -138,7 +139,7 @@ public class Pipe_Generator : MonoBehaviour
         // Debug.Log(message);
         for(int i = 0; i < 3; i++){
             for(int j = 0; j < 3; j++){
-                bool isActive = ((data & (1 << (3*i + j))) > 0);
+                bool isActive = ((data & (1 << (3*i + j))) > 0); // 導通・非導通
                 var ps = pipeStates[i, j];
 
                 // パイプを生成
@@ -155,6 +156,7 @@ public class Pipe_Generator : MonoBehaviour
                             StartCoroutine(InterruptPipe(i, k));
                         }
                     }
+                    
                     StartCoroutine(CreatePipeGrad(i, j));
                 }
 
