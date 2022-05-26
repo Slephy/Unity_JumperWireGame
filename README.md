@@ -9,6 +9,7 @@
 |  Game  |  ゲーム本体   |
 |  GitHub_practice  |  GitHubの使い方を練習するための場所  |
 |  JunperWireGame  |  Unityのプロジェクト  |
+|  Presentation | 発表資料 |
 |  memo  |  備忘録・バージョン情報など  |
 
 
