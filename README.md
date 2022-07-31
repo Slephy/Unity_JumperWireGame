@@ -21,4 +21,3 @@
 
 ## 紹介動画
 https://youtu.be/hfpJQqUmTTc
-[![alt]()](https://youtu.be/hfpJQqUmTTc)
